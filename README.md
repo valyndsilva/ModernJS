@@ -12,15 +12,17 @@ Building projects with vanilla JavaScript. (No frameworks or libraries used)
   - JavaScript Patterns: Module, Factory, State, Observer, Mediator, Singleton
   - Other: Local & session storage, regular expressions, try/catch error handling
 
-### 10 Projects Covered:
+### 12 Projects Covered:
 
-- Task List With Local Storage
+- Task List With Local Storage (DOM Manipulation & Local Storage)
 - Loan Calculator
-- Number Guess Game
-- OOP Book Listing App (ES5 Prototype & ES2015 Classes Version)
+- Number Guessing Game
+- OOP Book Listing App / Book Manager (ES5 Prototype & ES2015 Classes Version)
 - Chuck Norris Joke Generator
-- EasyHTTP - Custom HTTP Library (3 Versions - Callbacks / Promises / Async & Await)
-- Github Finder
-- WeatherJS App
+- EasyHTTP - Custom HTTP Library (3 Versions - Callbacks / Promises / Async & Await) (Fetch API)
+- Github Finder (GitHub API)
+- WeatherJS App (weatherunderground API)
+- Profile Scroller (Iterators)
+- State Pattern Interface
 - Calorie Tracker (Module Pattern)
-- Microposts - Frontend CRUD for REST API (Webpack & Babel)
+- Microposts - Frontend CRUD app for REST API (using ES6 Modules, Webpack & Babel)
