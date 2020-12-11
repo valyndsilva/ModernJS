@@ -11,6 +11,7 @@ Building projects with vanilla JavaScript. (No frameworks or libraries used)
   - ES2015+: Arrow functions, template strings, generators, iterators, maps & sets, symbols & more
   - JavaScript Patterns: Module, Factory, State, Observer, Mediator, Singleton
   - Other: Local & session storage, regular expressions, try/catch error handling
+  - Extras: Bootstrap 4, Materialize CSS, Skeleton CSS, HTTP/REST APIs, Webpack & Babel
 
 ### 12 Projects Covered:
 
