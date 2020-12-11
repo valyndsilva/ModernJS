@@ -16,14 +16,14 @@ Building projects with vanilla JavaScript. (No frameworks or libraries used)
 ### 12 Projects Covered:
 
 - Task List With Local Storage (DOM Manipulation & Local Storage)
-- Loan Calculator
-- Number Guessing Game
-- OOP Book Listing App / Book Manager (ES5 Prototype & ES2015 Classes Version)
+- Loan Calculator (DOM)
+- Number Guessing Game (DOM Manipulation & Local Storage)
+- Book Listing App / Book Manager (OOP, ES5 Prototype & ES2015 Classes Version)
 - Chuck Norris Joke Generator
 - EasyHTTP - Custom HTTP Library (3 Versions - Callbacks / Promises / Async & Await) (Fetch API)
 - Github Finder (GitHub API)
 - WeatherJS App (weatherunderground API)
-- Profile Scroller (Iterators)
+- Profile Scroller (Iterators and Generators)
 - State Pattern Interface
 - Calorie Tracker (Module Pattern)
 - Microposts - Frontend CRUD app for REST API (using ES6 Modules, Webpack & Babel)
