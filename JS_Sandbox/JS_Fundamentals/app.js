@@ -34,9 +34,9 @@ console.clear(); // clears the console
 // Variables - var, let and const(ES2015/ES6). In modern JS it's best to use let and const. var is rarely used.
 
 var name = "John Doe";
-console.log(name);
-name = "Steve Smith"; // We can reassign variables with var and let.
-console.log(name);
+console.log(nameA);
+nameA = "Steve Smith"; // We can reassign variables with var and let.
+console.log(nameA);
 
 // Init var
 var greeting; // you can initialize var without a value & assign later.
@@ -80,7 +80,8 @@ console.log(numbers);
 // numbers = [1,2,3,4,5,6]; // This won't work.
 console.log(numbers);
 
-// Important Note: By default we should use const, unless you need to change the value, initailize, use in an iterator or loop. Using const alerts the developer that the value cannot be re-assigned. It can only be mutated if it's an object or an array.
+// Important Note: By default we should use const, unless you need to change the value, initailize, use in an iterator or loop. Using const alerts the developer that the value cannot be re-assigned. 
+//It can only be mutated if it's an object or an array.
 
 console.clear(); // clears the console
 
@@ -90,7 +91,8 @@ console.clear(); // clears the console
 
 //Reference Data Types: Arrays, Object literals, Functions, Dates, etc. (accessed by reference. Objects that are stored on the heap. Pointer to a location in memory. ).
 
-// JS is a dynamically typed language. Types are associated with values not variables. The same variable can hold multiple types and we don't need to specify types. There are supersets of JS and addons to allow static typing (TypeScript, Flow).
+// JS is a dynamically typed language. Types are associated with values not variables. The same variable can hold multiple types and we don't need to specify types. 
+// There are supersets of JS and addons to allow static typing (TypeScript, Flow).
 
 //Primitive Data Types
 const name4 = "John Doe"; // String
@@ -854,7 +856,7 @@ console.clear(); // clears console
 // General Loops
 //For Loop
 for (let i = 0; i <= 10; i++) {
-  console.log("Number" + i);
+  console.log("Number " + i);
 }
 //Break out of the for loop example
 for (let i = 0; i <= 10; i++) {
@@ -869,7 +871,7 @@ for (let i = 0; i <= 10; i++) {
     console.log("Stop the loop");
     break;
   }
-  console.log("Number" + i);
+  console.log("Number " + i);
 }
 
 //While Loop
