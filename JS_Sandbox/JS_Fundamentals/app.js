@@ -1034,7 +1034,7 @@ if (true) {
   var a = 4; // var gets affected by block scope value
   let b = 5; // let and const don't get affected by block scope value in output
   const c = 6;
-  console.log("If Scope:", a, b, c); //4,5,6
+  console.log("If Block Scope:", a, b, c); //4,5,6
 }
 
 console.log("Global Scope:", a, b, c); //4,2,3
