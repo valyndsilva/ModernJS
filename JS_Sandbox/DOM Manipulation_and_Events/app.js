@@ -471,7 +471,7 @@
 //All the events above fire up if clicked on card-title due to event bubbling
 
 //Event Delegation:
-//You put the listener on one parent element and use the logic from the event handler to target the elements that you want
+//You put the event listener on one parent element and use the logic from the event handler to target the elements that you want
 //ED allows you to avoid adding event listeners to specific nodes;
 //instead, the event listener is added to one parent.
 //That event listener analyzes bubbled events to find a match on child elements.
@@ -481,10 +481,10 @@
 
 // function deleteItem() {
 //   console.log('delete item');
-// } //Here thd event is only applied to the 1st element so we need to fix this with ED
+// } //Here the event is only applied to the 1st element so we need to fix this with ED
 
 //You need to use event delegation in 2 scenarios:
-//A. To apply the event to the parent that finds ans applies to all child elements
+//A. To apply the event to the parent that finds and applies to all child elements
 //B. If you dynamically insert anything into the DOM through JavaScript that was not there when the page loaded
 
 // //Example Using Event Delegation: applies event to all the required elements.
