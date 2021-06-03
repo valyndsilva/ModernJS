@@ -52,7 +52,7 @@ function getTasks() {
   });
 }
 
-// Add Task
+// 1. Add Task
 function addTask(e) {
   if(taskInput.value === '') {
     alert('Add a task');
@@ -99,7 +99,7 @@ function storeTaskInLocalStorage(task) {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-// Remove Task
+// 2. Remove Task
 function removeTask(e) {
   if(e.target.parentElement.classList.contains('delete-item')) { //parent of the i tag
     if(confirm('Are You Sure?')) {
@@ -129,7 +129,7 @@ function removeTaskFromLocalStorage(taskItem) {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-// Clear Tasks
+// 3. Clear Tasks
 function clearTasks() {
   // taskList.innerHTML = '';
 
@@ -149,7 +149,7 @@ function clearTasksFromLocalStorage() {
   localStorage.clear();
 }
 
-// Filter Tasks
+// 4. Filter Tasks
 function filterTasks(e) {
   const text = e.target.value.toLowerCase(); // value entered in the filter input
 
