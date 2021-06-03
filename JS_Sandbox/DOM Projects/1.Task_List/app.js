@@ -101,9 +101,9 @@ function storeTaskInLocalStorage(task) {
 
 // Remove Task
 function removeTask(e) {
-  if(e.target.parentElement.classList.contains('delete-item')) {
+  if(e.target.parentElement.classList.contains('delete-item')) { //parent of the i tag
     if(confirm('Are You Sure?')) {
-      e.target.parentElement.parentElement.remove();
+      e.target.parentElement.parentElement.remove(); //parent of the a tag
 
       // Remove from LS
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
@@ -133,8 +133,8 @@ function removeTaskFromLocalStorage(taskItem) {
 function clearTasks() {
   // taskList.innerHTML = '';
 
-  // Faster
-  while(taskList.firstChild) {
+  // Faster way of removing each task (Recommended Method)
+  while(taskList.firstChild) { //while there is something in the list
     taskList.removeChild(taskList.firstChild);
   }
 
@@ -151,12 +151,12 @@ function clearTasksFromLocalStorage() {
 
 // Filter Tasks
 function filterTasks(e) {
-  const text = e.target.value.toLowerCase();
+  const text = e.target.value.toLowerCase(); // value entered in the filter input
 
   document.querySelectorAll('.collection-item').forEach(function(task){
     const item = task.firstChild.textContent;
-    if(item.toLowerCase().indexOf(text) != -1){
-      task.style.display = 'block';
+    if(item.toLowerCase().indexOf(text) != -1){ // Retuns a value of -1 if there is no match
+      task.style.display = 'block'; // if it finds a match to the characters typed in the filter input.
     } else {
       task.style.display = 'none';
     }
