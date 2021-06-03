@@ -9,7 +9,7 @@
 // //2.Examining the Document Object:
 // let val;
 // val = document;
-// val = document.all;
+// val = document.all; // displays the html collection
 // val = document.all[2];
 // val = document.all.length;
 // val = document.head;
@@ -58,8 +58,10 @@
 // //A.document.getElementById();
 // const taskTitle = document.getElementById('task-title');
 // console.log(taskTitle);
+
 // //B.Get things from the element
 // console.log(taskTitle.id);
+
 // //C. Change styling
 // taskTitle.style.background = '#333';
 // taskTitle.style.color = '#fff';
@@ -103,7 +105,7 @@
 //   .getElementsByClassName('collection-item');
 // console.log(listItems);
 
-// //B.getElementsByTagName(); //it selects the element tag
+// //B.document.getElementsByTagName(); //it selects the element tag
 // let lis = document.getElementsByTagName('li');
 // console.log(lis); //returns a html collection
 // console.log(lis[1]);
@@ -277,14 +279,6 @@
 // console.log(newHeading);
 // //Replace element
 // cardAction.replaceChild(newHeading, oldHeading);
-
-// var str2 = document.getElementById(
-//   'select2-user-role-result-qzb1-agency'
-// ).innerHTML;
-// var res2 = str2.replace('Agency', 'Agency / Builder / Developer');
-// document.getElementsByClassName(
-//   'select2-results__option:nth-child(2)'
-// ).innerHTML = res2;
 
 // //B.Remove element
 // const lis = document.querySelectorAll('li');
