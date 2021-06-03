@@ -10,7 +10,7 @@ loadEventListeners();
 
 // Load all event listeners
 function loadEventListeners() {
-  // DOM Load event
+  // 8. DOM Load event
   document.addEventListener('DOMContentLoaded', getTasks);
   // Add task event
   form.addEventListener('submit', addTask);
@@ -22,7 +22,7 @@ function loadEventListeners() {
   filter.addEventListener('keyup', filterTasks);
 }
 
-// Get Tasks from LS
+// 9. Get Tasks from LS
 function getTasks() {
   let tasks;
   if(localStorage.getItem('tasks') === null){
@@ -76,7 +76,7 @@ function addTask(e) {
   // Append li to ul
   taskList.appendChild(li);
 
-  // Store in LS
+  // 6. Store in LS
   storeTaskInLocalStorage(taskInput.value);
 
   // Clear input
@@ -85,7 +85,7 @@ function addTask(e) {
   e.preventDefault();
 }
 
-// Store Task
+// 7.Store Task - Persist values to local storage
 function storeTaskInLocalStorage(task) {
   let tasks;
   if(localStorage.getItem('tasks') === null){
@@ -105,13 +105,13 @@ function removeTask(e) {
     if(confirm('Are You Sure?')) {
       e.target.parentElement.parentElement.remove(); //parent of the a tag
 
-      // Remove from LS
+      // 10. Remove from LS
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
     }
   }
 }
 
-// Remove from LS
+// 11. Remove from LS
 function removeTaskFromLocalStorage(taskItem) {
   let tasks;
   if(localStorage.getItem('tasks') === null){
@@ -121,11 +121,11 @@ function removeTaskFromLocalStorage(taskItem) {
   }
 
   tasks.forEach(function(task, index){
-    if(taskItem.textContent === task){
-      tasks.splice(index, 1);
+    if(taskItem.textContent === task){ //if taskItem text matches the task in the current iteration 
+      tasks.splice(index, 1); //delete that 1 task from the index
     }
   });
-
+  //Set the LS again
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
