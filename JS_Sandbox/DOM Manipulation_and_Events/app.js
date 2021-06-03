@@ -540,7 +540,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
   //   console.log(task);
   //   localStorage.setItem('task', task);
   //   alert('Task saved');
-  //In the case above you can only store one one task at a time in storage. If you try to add new task the old one gets overwritten.
+  //In the case above you can only store one task at a time in storage. If you try to add new task the old one gets overwritten.
   //To fix this issue we can create an array of tasks and store that as a string
 
   //Ex 2:
@@ -566,7 +566,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
   alert('Task saved');
   e.preventDefault();
 });
-//localStorage only stores strings. So wrap tasks in a parse now:
+//localStorage only stores strings. So wrap tasks in a parse:
 const tasks = JSON.parse(localStorage.getItem('tasks'));
 tasks.forEach(function(task) {
   console.log(task);
