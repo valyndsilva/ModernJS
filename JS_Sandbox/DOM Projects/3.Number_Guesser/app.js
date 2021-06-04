@@ -13,7 +13,7 @@ let min = 1,
     winningNum = getRandomNum(min, max),
     guessesLeft = 3;
 
-// UI Elements
+// UI Vars
 const game = document.querySelector('#game'),
       minNum = document.querySelector('.min-num'),
       maxNum = document.querySelector('.max-num'),
