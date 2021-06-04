@@ -1,9 +1,9 @@
 // Listen for submit
 document.getElementById('loan-form').addEventListener('submit', function(e){
-  // Hide results
+  // 9.Hide results
   document.getElementById('results').style.display = 'none';
   
-  // Show loader
+  // 10.Show loader
   document.getElementById('loading').style.display = 'block';
 
   setTimeout(calculateResults, 2000);
@@ -35,10 +35,10 @@ function calculateResults(){
     totalPayment.value = (monthly * calculatedPayments).toFixed(2);
     totalInterest.value = ((monthly * calculatedPayments)-principal).toFixed(2);
 
-    // Show results
+    // 11.Show results
     document.getElementById('results').style.display = 'block';
 
-    // Hide loader
+    // 12.Hide loader
     document.getElementById('loading').style.display = 'none';
 
   } else {
@@ -48,10 +48,10 @@ function calculateResults(){
 
 // 1.Show Error
 function showError(error){
-  // Hide results
+  // 13.Hide results
   document.getElementById('results').style.display = 'none';
   
-  // Hide loader
+  // 14.Hide loader
   document.getElementById('loading').style.display = 'none';
 
   // 2.Create a div
