@@ -3,7 +3,7 @@ GAME FUNCTION:
 - Player must guess a number between a min and max
 - Player gets a certain amount of guesses
 - Notify player of guesses remaining
-- Notify the player of the correct answer if loose
+- Notify the player of the correct answer if they loose
 - Let player choose to play again
 */
 
@@ -21,9 +21,15 @@ const game = document.querySelector('#game'),
       guessInput = document.querySelector('#guess-input'),
       message = document.querySelector('.message');
 
-// Assign UI min and max
+// 1.Assign UI min and max
 minNum.textContent = min;
 maxNum.textContent = max;
+
+
+// 2.Get Winning Number
+function getRandomNum(min, max){
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
 
 // Play again event listener
 game.addEventListener('mousedown', function(e){
@@ -32,29 +38,29 @@ game.addEventListener('mousedown', function(e){
   }
 });
       
-// Listen for guess
+// 3.Add event listener to listen for guess
 guessBtn.addEventListener('click', function(){
-  let guess = parseInt(guessInput.value);
+  let guess = parseInt(guessInput.value); // Convert output from string to int to be able to compare
   
-  // Validate
+  // 4.Validate
   if(isNaN(guess) || guess < min || guess > max){
     setMessage(`Please enter a number between ${min} and ${max}`, 'red');
   }
 
-  // Check if won
+  // 7.Check if won
   if(guess === winningNum){
     // Game over - won
     gameOver(true, `${winningNum} is correct, YOU WIN!`);
 
   } else {
     // Wrong number
-    guessesLeft -= 1;
+    guessesLeft -= 1; //guessesLeft = guessesLeft - 1;
 
     if(guessesLeft === 0){
       // Game over - lost
       gameOver(false, `Game Over, you lost. The correct number was ${winningNum}`);
     } else {
-      // Game continues - answer wrong
+      // Game continues if answer wrong
 
       // Change border color
       guessInput.style.borderColor = 'red';
@@ -68,7 +74,7 @@ guessBtn.addEventListener('click', function(){
   }
 });
 
-// Game over
+// 6.Game over
 function gameOver(won, msg){
   let color;
   won === true ? color = 'green' : color = 'red';
@@ -87,12 +93,7 @@ function gameOver(won, msg){
   guessBtn.className += 'play-again';
 }
 
-// Get Winning Number
-function getRandomNum(min, max){
-  return Math.floor(Math.random()*(max-min+1)+min);
-}
-
-// Set message
+// 5.Set message
 function setMessage(msg, color){
   message.style.color = color;
   message.textContent = msg;
