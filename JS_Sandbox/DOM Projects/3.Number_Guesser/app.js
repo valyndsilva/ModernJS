@@ -31,7 +31,7 @@ function getRandomNum(min, max){
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-// Play again event listener
+// 11.Play again event listener
 game.addEventListener('mousedown', function(e){
   if(e.target.className === 'play-again'){
     window.location.reload();
@@ -78,7 +78,6 @@ guessBtn.addEventListener('click', function(){
 function gameOver(won, msg){
   let color;
   won === true ? color = 'green' : color = 'red';
-
   // Disable input
   guessInput.disabled = true;
   // Change border color
@@ -88,7 +87,7 @@ function gameOver(won, msg){
   // Set message
   setMessage(msg);
 
-  // PLay Again?
+  // 10.Play Again?
   guessBtn.value = 'Play Again';
   guessBtn.className += 'play-again';
 }
