@@ -31,7 +31,7 @@ function calculateResults(){
   const monthly = (principal*x*calculatedInterest)/(x-1);
 
   if(isFinite(monthly)) {
-    monthlyPayment.value = monthly.toFixed(2);
+    monthlyPayment.value = monthly.toFixed(2); //set decimal place by 2
     totalPayment.value = (monthly * calculatedPayments).toFixed(2);
     totalInterest.value = ((monthly * calculatedPayments)-principal).toFixed(2);
 
@@ -46,7 +46,7 @@ function calculateResults(){
   }
 }
 
-// Show Error
+// 1.Show Error
 function showError(error){
   // Hide results
   document.getElementById('results').style.display = 'none';
@@ -54,27 +54,27 @@ function showError(error){
   // Hide loader
   document.getElementById('loading').style.display = 'none';
 
-  // Create a div
+  // 2.Create a div
   const errorDiv = document.createElement('div');
 
-  // Get elements
+  // 3.Add class
+  errorDiv.className = 'alert alert-danger';
+
+  // 4.Create text node and append to div
+  errorDiv.appendChild(document.createTextNode(error));
+  
+  // 5.Get elements
   const card = document.querySelector('.card');
   const heading = document.querySelector('.heading');
 
-  // Add class
-  errorDiv.className = 'alert alert-danger';
-
-  // Create text node and append to div
-  errorDiv.appendChild(document.createTextNode(error));
-
-  // Insert error above heading
+  // 6.Insert error above heading
   card.insertBefore(errorDiv, heading);
 
-  // Clear error after 3 seconds
+  // 7.Clear error after 3 seconds
   setTimeout(clearError, 3000);
 }
 
-// Clear error
+// 8.Clear error
 function clearError(){
   document.querySelector('.alert').remove();
 }
