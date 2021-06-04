@@ -26,13 +26,13 @@ minNum.textContent = min;
 maxNum.textContent = max;
 
 
-// 2.Get Winning Number
+// 2.Get Winning Number - Hoisting
 function getRandomNum(min, max){
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 // 11.Play again event listener
-game.addEventListener('mousedown', function(e){
+game.addEventListener('mousedown', function(e){ //avoid click event as it automatically puts the play-again in effect with the mousedown and mouseup action.
   if(e.target.className === 'play-again'){
     window.location.reload();
   }
@@ -89,7 +89,7 @@ function gameOver(won, msg){
 
   // 10.Play Again?
   guessBtn.value = 'Play Again';
-  guessBtn.className += 'play-again';
+  guessBtn.className += 'play-again'; //Append class play-again
 }
 
 // 5.Set message
