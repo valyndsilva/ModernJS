@@ -154,7 +154,7 @@ document.getElementById('book-list').addEventListener('click', function(e){
   // Remove from LS
   Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
-  // Show message
+  // 15.Show message
   ui.showAlert('Book Removed!', 'success');
 
   e.preventDefault();
