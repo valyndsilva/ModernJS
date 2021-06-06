@@ -10,7 +10,7 @@
 // console.log(selwyn.age);
 
 //case 2: for multiple instances of a certain type of object, prototypes, inheritance we need to use constructors
-function Person(name){ //Person constructor
+function Person(name, age){ //Person constructor
     this.name = name; // name is the property
     this.age = age;
     console.log(this); //'this' inside a constructor / function scope represents the current instance of the object
