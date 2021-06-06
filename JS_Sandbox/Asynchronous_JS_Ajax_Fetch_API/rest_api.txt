@@ -13,6 +13,8 @@ All APIs have their own rules and structure.
 API is like a messenger and REST lets us use HTTP Requests to format that message.
 
 REST APIs takes in multiple types of HTTP Requests. Ex: GET, POST, PUT, DELETE
+
+Different Types of HTTP Requests:
 GET: Retrieve data from a specified resource.
 POST: Submit data to be processed to a specified resource.
 PUT: Update a specified resource.
