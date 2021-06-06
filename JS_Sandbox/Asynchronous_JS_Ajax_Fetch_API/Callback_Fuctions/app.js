@@ -10,6 +10,7 @@ const posts = [
     {title: 'Post Two', body: 'This is post two'}
   ];
   
+  //Synchronous method of using Callback functions:
   // function createPost(post) {
   //   setTimeout(function() {
   //     posts.push(post);
@@ -30,7 +31,10 @@ const posts = [
   // createPost({title: 'Post Three', body: 'This is post three'});
   
   // getPosts();
+
+  //In the above example it gets the 2 posts first before it could create a new one.
   
+  //Asynchronous method of using Callback functions:
   function createPost(post, callback) {
     setTimeout(function() {
       posts.push(post);
@@ -48,5 +52,5 @@ const posts = [
       document.body.innerHTML = output;
     }, 1000);
   }
-  
-  createPost({title: 'Post Three', body: 'This is post three'}, getPosts);
+  //It calls getPosts here along with createPost before the end.
+  createPost({title: 'Post Three', body: 'This is post three'}, getPosts); 
