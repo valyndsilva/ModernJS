@@ -1,4 +1,4 @@
-// // Constructors & 'this' keyword
+// // I. Constructors & 'this' keyword
 // // 'this' is used to access any properties or methods within a constructor
 // // case 1: to deal with a single instance or 1 object you can use a object literal
 // const selwyn = {
@@ -34,11 +34,11 @@
 //       return Math.abs(ageDate.getUTCFullYear() - 1970); //Calculate age from a birthday
 //     }
 //   }
-//   const chad = new Person('Chad', '12-10-1990');
+//   const chad = new Person1('Chad', '12-10-1990');
 //   console.log(chad.calculateAge());
   
 
-// // Built-in Constructors: (Not used much)
+// // II. Built-in Constructors: (Not used much)
 // // String
 // const name1 = 'Jeff';
 // // console.log(name1);
@@ -99,50 +99,90 @@
 // console.log(re2);
 
 
-// Prototypes:
-// Each object in JS has a prototype. A prototype is an object itself. 
-// All objects inherit their properties and methods from their prototypes.
-// When you use object literals it inherits from Object.prototype
-// When you use object created through a constructor ex:Person it inherits from Person.prototype
-// Using prototypes helps avoid flooding constructors with too many functions. Instead the functions are stored into the prototype
+// // III. Prototypes:
+// // Each object in JS has a prototype. A prototype is an object itself. 
+// // All objects inherit their properties and methods from their prototypes.
+// // When you use object literals it inherits from Object.prototype
+// // When you use object created through a constructor ex:Person it inherits from Person.prototype
+// // Using prototypes helps avoid flooding constructors with too many functions. Instead the functions are stored into the prototype
 
-// Person constructor
-function Person(firstName, lastName, dob) {
+// // Person constructor
+// function Person(firstName, lastName, dob) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.birthday = new Date(dob);
+//     // this.calculateAge = function(){
+//     //   const diff =  Date.now() - this.birthday.getTime();
+//     //   const ageDate = new Date(diff);
+//     //   return Math.abs(ageDate.getUTCFullYear() - 1970);
+//     // }
+//   }
+
+//   const john = new Person('John', 'Doe', '8-12-90');
+//   const mary = new Person('Mary', 'Johnson', 'March 20 1978');
+//   console.log(mary); 
+//   // 1st __proto__ is the Person.prototype.
+//   // 2nd __proto__ is the Object.prototype that has it's own properties and methods. Ex:hasOwnProperty (this returns true or false to confirm if it has a property in it)
+  
+//   // Calculate age using prototype
+//   Person.prototype.calculateAge = function(){  //calculate age is moved into the prototype
+//     const diff =  Date.now() - this.birthday.getTime();
+//     const ageDate = new Date(diff);
+//     return Math.abs(ageDate.getUTCFullYear() - 1970);
+//   }
+//     console.log(john.calculateAge());
+
+//   // Get full name using prototype
+//   Person.prototype.getFullName = function(){
+//     return `${this.firstName} ${this.lastName}`;
+//   }
+//   console.log(mary.getFullName());
+
+//   // Person gets married
+//   Person.prototype.getsMarried = function(newLastName){
+//     this.lastName = newLastName;
+//   }
+//   mary.getsMarried('Smith');
+//   console.log(mary.getFullName());
+//   console.log(mary.hasOwnProperty('firstName'));
+//   console.log(mary.hasOwnProperty('getFullName'));
+
+
+// IV. Prototypal Inheritance:
+
+// 1.Person constructor
+function Person(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.birthday = new Date(dob);
-    // this.calculateAge = function(){
-    //   const diff =  Date.now() - this.birthday.getTime();
-    //   const ageDate = new Date(diff);
-    //   return Math.abs(ageDate.getUTCFullYear() - 1970);
-    // }
   }
 
-  const john = new Person('John', 'Doe', '8-12-90');
-  const mary = new Person('Mary', 'Johnson', 'March 20 1978');
-  console.log(mary); 
-  // 1st __proto__ is the Person.prototype.
-  // 2nd __proto__ is the Object.prototype that has it's own properties and methods. Ex:hasOwnProperty (this returns true or false to confirm if it has a property in it)
+  // 2.Greeting
+  Person.prototype.greeting = function(){
+    return `Hello there ${this.firstName} ${this.lastName}`;
+  }
+  const person1 = new Person('John', 'Doe');
+  console.log(person1.greeting());
   
-  // Calculate age using prototype
-  Person.prototype.calculateAge = function(){  //calculate age is moved into the prototype
-    const diff =  Date.now() - this.birthday.getTime();
-    const ageDate = new Date(diff);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  // 3.Customer constructor
+  function Customer(firstName, lastName, phone, membership) {
+    Person.call(this, firstName, lastName); //.call is a function that allows to call another function from elsewhere into the current function.
+  
+    this.phone = phone;
+    this.membership = membership;
   }
-    console.log(john.calculateAge());
+  // 5.Inherit the Person prototype methods
+  Customer.prototype = Object.create(Person.prototype); // 1st __proto__ returns a Person instead of Customer
 
-  // Get full name using prototype
-  Person.prototype.getFullName = function(){
-    return `${this.firstName} ${this.lastName}`;
-  }
-  console.log(mary.getFullName());
+  // 6.Make customer.prototype return Customer() constructor 
+  Customer.prototype.constructor = Customer;
 
-  // Person gets married
-  Person.prototype.getsMarried = function(newLastName){
-    this.lastName = newLastName;
+  // 4.Create customer
+  const customer1 = new Customer('Tom', 'Smith', '555-555-5555', 'Standard');
+  console.log(customer1);
+//   console.log(customer1.greeting()); // does not inherit the prototype of Person
+
+  // 7.Overwrite Person greeting with Customer greeting
+  Customer.prototype.greeting = function(){
+    return `Hello there ${this.firstName} ${this.lastName} welcome to our company`;
   }
-  mary.getsMarried('Smith');
-  console.log(mary.getFullName());
-  console.log(mary.hasOwnProperty('firstName'));
-  console.log(mary.hasOwnProperty('getFullName'));
+  console.log(customer1.greeting());
