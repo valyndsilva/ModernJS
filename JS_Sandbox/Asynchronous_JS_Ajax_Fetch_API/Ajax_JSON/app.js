@@ -6,7 +6,7 @@ document.getElementById('button2').addEventListener('click', loadCustomers);
 function loadCustomer(e) {
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', 'customer.json', true);
+  xhr.open('GET', 'customer.json', true); //true here means asynchronous
 
   xhr.onload = function(){
     if(this.status === 200) {
