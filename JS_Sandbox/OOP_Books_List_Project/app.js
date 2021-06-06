@@ -1,18 +1,21 @@
-// Book Constructor
+// 1.Book Constructor
 function Book(title, author, isbn) {
   this.title = title;
   this.author = author;
   this.isbn = isbn;
 }
 
-// UI Constructor
+// 2.UI Constructor
 function UI() {}
 
-// Add Book To List
+// 7.Add Book To List
 UI.prototype.addBookToList = function(book){
+  // console.log(book);
   const list = document.getElementById('book-list');
   // Create tr element
   const row = document.createElement('tr');
+  // console.log(row);
+
   // Insert cols
   row.innerHTML = `
     <td>${book.title}</td>
@@ -59,31 +62,34 @@ UI.prototype.clearFields = function() {
   document.getElementById('isbn').value = '';
 }
 
-// Event Listener for add book
+// 3.Event Listener to add book
 document.getElementById('book-form').addEventListener('submit', function(e){
   // Get form values
   const title = document.getElementById('title').value,
         author = document.getElementById('author').value,
         isbn = document.getElementById('isbn').value
 
-  // Instantiate book
+        // console.log(title,author,isbn);
+
+  // 4.Instantiate book
   const book = new Book(title, author, isbn);
 
-  // Instantiate UI
+  // 5.Instantiate UI
   const ui = new UI();
+  // console.log(ui);
 
   // Validate
   if(title === '' || author === '' || isbn === '') {
     // Error alert
     ui.showAlert('Please fill in all fields', 'error');
   } else {
-    // Add book to list
+    // 6.Add book to list
     ui.addBookToList(book);
 
     // Show success
     ui.showAlert('Book Added!', 'success');
   
-    // Clear fields
+    // 8.Clear fields
     ui.clearFields();
   }
 
