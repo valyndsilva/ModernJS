@@ -1,3 +1,4 @@
+// 1.Book Class
 class Book {
   constructor(title, author, isbn) {
     this.title = title;
@@ -6,7 +7,9 @@ class Book {
   }
 }
 
+// 2.UI Class
 class UI {
+ // 3.Add book to list
   addBookToList(book) {
     const list = document.getElementById('book-list');
     // Create tr element
@@ -21,7 +24,7 @@ class UI {
   
     list.appendChild(row);
   }
-
+// 4.Show Alert
   showAlert(message, className) {
     // Create div
     const div = document.createElement('div');
@@ -41,13 +44,13 @@ class UI {
       document.querySelector('.alert').remove();
     }, 3000);
   }
-
+  // 5.Delete Book
   deleteBook(target) {
     if(target.className === 'delete') {
       target.parentElement.parentElement.remove();
     }
   }
-
+  // 6.Clear Fields
   clearFields() {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
@@ -103,22 +106,22 @@ class Store {
 // DOM Load Event
 document.addEventListener('DOMContentLoaded', Store.displayBooks);
 
-// Event Listener for add book
+// 7.Event Listener for add book
 document.getElementById('book-form').addEventListener('submit', function(e){
-  // Get form values
+  // 8.Get form values
   const title = document.getElementById('title').value,
         author = document.getElementById('author').value,
         isbn = document.getElementById('isbn').value
 
-  // Instantiate book
+  // 9.Instantiate book
   const book = new Book(title, author, isbn);
 
-  // Instantiate UI
+  // 10.Instantiate UI
   const ui = new UI();
 
   console.log(ui);
 
-  // Validate
+  // 11.Validate
   if(title === '' || author === '' || isbn === '') {
     // Error alert
     ui.showAlert('Please fill in all fields', 'error');
@@ -139,13 +142,13 @@ document.getElementById('book-form').addEventListener('submit', function(e){
   e.preventDefault();
 });
 
-// Event Listener for delete
+// 12.Event Listener for delete
 document.getElementById('book-list').addEventListener('click', function(e){
 
-  // Instantiate UI
+  // 13.Instantiate UI
   const ui = new UI();
 
-  // Delete book
+  // 14.Delete book
   ui.deleteBook(e.target);
 
   // Remove from LS
