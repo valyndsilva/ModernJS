@@ -51,7 +51,7 @@ function loadData() {
   const xhr = new XMLHttpRequest();
 
   // 2.Open (this property specifies type of request and URL / filename you want to make the request to)
-  xhr.open('GET', 'data.txt', true);
+  xhr.open('GET', 'rest_api.txt', true);
   // console.log('READYSTATE', xhr.readyState); // readyState is 1
 
   // 5.Optional - Used for spinners/loaders

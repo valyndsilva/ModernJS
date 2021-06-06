@@ -1,0 +1,29 @@
+What is an API?
+Application Programming Interface. Contract provided by one piece of software to another.
+Structure requests and responses like in Chuck Norris Joke Generator example.
+
+What is REST?
+Respresentational State Transfer.
+Architecture style for designing networked applications.
+Relies on a stateless, client-server protoco, almost all cases with HTTP.
+Treats server objects as resources that can be treated or destroyed. 
+Server object ex: blog post, user stored in the db.
+REST operates with just HTTP Requests and some standard like JSON it can be used virtually with any programming language.
+All APIs have their own rules and structure.
+API is like a messenger and REST lets us use HTTP Requests to format that message.
+
+REST APIs takes in multiple types of HTTP Requests. Ex: GET, POST, PUT, DELETE
+GET: Retrieve data from a specified resource.
+POST: Submit data to be processed to a specified resource.
+PUT: Update a specified resource.
+DELETE: Delete a specified resource.
+HEAD: Same as GET but does not return a body.
+OPTIONS: Returns the supported HTTP methods.
+PATCH: Updates partial resources.
+
+When you work with APIs you deal with EndPoints which are URLs you access to do certain tasks.
+GET: https://someurl.com/api/users      // Get all users
+GET: https://someurl.com/api/users/1    // Get single user
+POST: https://someurl.com/api/users     // Add user
+PUT: https://someurl.com/api/users/1    // Update user
+DELETE: https://someurl.com/api/users/1 //Delete User
