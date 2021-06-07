@@ -1,3 +1,4 @@
+// // Using ES6 Promises
 document.getElementById('button1').addEventListener('click', getText);
 
 document.getElementById('button2').addEventListener('click', getJson);
@@ -26,7 +27,8 @@ function getText() {
 function getJson() {
   fetch('posts.json')
     .then(function(res){
-      return res.json();
+         //   console.log(res.json());
+      return res.json();  //from Response prototype > json prototype returns promise
     })
     .then(function(data) {
       console.log(data);
@@ -46,7 +48,7 @@ function getJson() {
 function getExternal() {
   fetch('https://api.github.com/users')
     .then(function(res){
-      console.log(res.json());
+    //   console.log(res.json());
       return res.json(); //from Response prototype > json prototype returns promise
     })
     .then(function(data) {
