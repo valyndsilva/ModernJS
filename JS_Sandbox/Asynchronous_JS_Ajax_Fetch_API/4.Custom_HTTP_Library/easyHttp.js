@@ -29,10 +29,11 @@ easyHTTP.prototype.post = function(url, data, callback) {
   
     let self = this;
     this.http.onload = function() {
-      callback(null, self.http.responseText);
+        //don't need to check status since we are doing a POST request
+      callback(null, self.http.responseText); // new post will have an id of 101 since the jsonplaceholder already has 100 posts.
     }
   
-    this.http.send(JSON.stringify(data));
+    this.http.send(JSON.stringify(data)); //send data as a JSON string
   }
   
   
