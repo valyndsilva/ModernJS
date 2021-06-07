@@ -1,3 +1,11 @@
+/**
+ * EasyHTTP Library using ES5
+ * Library for making HTTP Requests 
+ * @version 1.0.0
+ * @author Valyn Silva
+ * @license MIT
+ * 
+ */
 function easyHTTP() {
     this.http = new XMLHttpRequest();
   }
