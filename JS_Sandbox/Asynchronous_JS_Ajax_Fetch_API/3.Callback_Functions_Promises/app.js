@@ -88,7 +88,7 @@
   }
   
   createPost({title: 'Post Three', body: 'This is post three'})
-  .then(getPosts) //when we get a promises response/resolve we handle it with '.then'
-  .catch(function(err) { //when we get a promises reject we handle it with '.catch'
+  .then(getPosts) //when we get a promises response/resolve() we handle it with '.then'
+  .catch(function(err) { //when we get a promises reject() we handle it with '.catch'
     console.log(err);
   });
