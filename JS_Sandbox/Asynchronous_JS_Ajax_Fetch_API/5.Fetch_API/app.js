@@ -46,7 +46,8 @@ function getJson() {
 function getExternal() {
   fetch('https://api.github.com/users')
     .then(function(res){
-      return res.json();
+      console.log(res.json());
+      return res.json(); //from Response prototype > json prototype returns promise
     })
     .then(function(data) {
       console.log(data);
