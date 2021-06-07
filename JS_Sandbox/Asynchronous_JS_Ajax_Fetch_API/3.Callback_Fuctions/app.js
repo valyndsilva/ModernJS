@@ -1,5 +1,5 @@
 // Callback Function: 
-//Is a function passed in as a parameter to another function and then it's ran inside the function body. 
+//Is a function passed in as a parameter to another function and then called within that function.
 
 //Callback functions can be synchronous or asynchronous.
 //Array.forEach(function()) is a callback function. Here it is synchronous.
