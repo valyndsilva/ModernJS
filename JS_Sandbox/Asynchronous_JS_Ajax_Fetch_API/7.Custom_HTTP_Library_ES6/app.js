@@ -1,9 +1,9 @@
 const http = new easyHTTP;
 
-// // Get Users (GET)
 // // const users = http.get('https://jsonplaceholder.typicode.com/users');
 // // console.log(users); //returns a promise which is not what we want. We need the data from the promise (response).
 
+// // Get Users (GET)
 // http.get('https://jsonplaceholder.typicode.com/users')
 // .then(data => console.log(data))
 // .catch(err => console.log(err));

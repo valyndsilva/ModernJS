@@ -16,8 +16,7 @@ class easyHTTP {
       .then(res => res.json())
       .then(data => resolve(data))
       .catch(err => reject(err));
-    })
-
+    });
     }
   
    // Make an HTTP POST Request
@@ -69,7 +68,6 @@ delete(url) {
     .catch(err => reject(err));
   });
 }
-
     }
   
   
