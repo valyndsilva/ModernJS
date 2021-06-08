@@ -15,7 +15,7 @@ function getWeather() {
       .getWeather()
       .then(results => {
        // console.log(results);
-        ui.paint(results)
+        ui.paint(results) //1st create the UI class in ui.js
       })
       .catch(err => console.log(err))
   }
