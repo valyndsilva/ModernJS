@@ -22,7 +22,7 @@ Building projects with vanilla JavaScript. (No frameworks or libraries used)
 - Chuck Norris Joke Generator
 - EasyHTTP - Custom HTTP Library (3 Versions - Callbacks / Promises / Async & Await) (Fetch API)
 - Github Finder (GitHub API)
-- WeatherJS App (weatherunderground API)
+- WeatherJS App (Openweathermap API)
 - Profile Scroller (Iterators and Generators)
 - State Pattern Interface
 - Calorie Tracker (Module Pattern)
