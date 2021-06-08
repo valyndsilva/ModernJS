@@ -2,10 +2,10 @@ class UI {
     constructor() {
       this.profile = document.getElementById('profile');
     }
-  
+  //Display profile and UI
     showProfile(user) {
-    //   console.log(user);
-    // refer to https://api.github.com/users/valyndsilva to get the keys.
+        //   console.log(user);
+    // refer to https://api.github.com/users/valyndsilva to get the key
       this.profile.innerHTML = `
         <div class="card card-body mb-3">
           <div class="row">
@@ -31,5 +31,40 @@ class UI {
         <h3 class="page-heading mb-3">Latest Repos</h3>
         <div id="repos"></div>
       `;
+    }
+
+    //Show alert message
+    showAlert(message, className){
+        //Clear any remaining alerts
+        this.clearAlert();
+        //Create div
+        const div = document.createElement('div');
+        //Add Classes
+        div.className = className;
+        // Add text
+        div.appendChild(document.createTextNode(message));
+        //Get parent
+        const container = document.querySelector('.searchContainer');
+        //Get search box
+        const search = document.querySelector('.search');
+        //Insert alert
+        container.insertBefore(div,search);
+
+        //Timeout after 3 seconds
+        setTimeout(() => {
+            this.clearAlert();
+        }, 3000);
+    }
+
+    //Clear alert message
+    clearAlert(){
+        const currentAlert = document.querySelector('.alert');
+        if(currentAlert){
+            currentAlert.remove();
+        }
+    }
+    //Clear profile
+    clearProfile(){
+        this.profile.innerHTML = '';
     }
   }
