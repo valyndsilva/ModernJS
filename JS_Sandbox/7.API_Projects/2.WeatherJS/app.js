@@ -1,3 +1,4 @@
+// Init storage
 const storage = new Storage()
 
 //get stored location data
@@ -37,7 +38,7 @@ document.getElementById('w-change-btn').addEventListener('click', e => {
   //get and display weather
   getWeather()
 
-  //close modal
+  //Use jQuery to close modal
   $('#locModal').modal('hide')
   const modal = document.getElementById('locModal')
 })
