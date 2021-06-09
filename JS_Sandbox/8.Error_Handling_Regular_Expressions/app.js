@@ -49,37 +49,72 @@
 // console.log('Program continues...');
 
 
-// // II.Regular expressions
-let re;
-re = /hello/;
-re = /hello/i; // i =  case insensitive
-// re = /hello/g; // Global search
+// // II.Regular expressions: Evaluation Functions
+// let re;
+// re = /hello/;
+// re = /hello/i; // i =  case insensitive
+// // re = /hello/g; // Global search
 
+// // 1.source()
 // console.log(re);
-// console.log(re.source); // just gives the expressins between / /
+// console.log(re.source); // just gives the expression between /  /
 
-// // 1.exec() - Return result in an array or null
+// // 2.exec() - Return result in an array or null
 // const result = re.exec('hello world'); 
 // console.log(result); //searches for the word 'hello'
-// console.log(result[0]); // returns 'hello'
+// console.log(result[0]); // returns 'hello' the first word
 // console.log(result.index);
 // console.log(result.input); // returns the value passed in 'hello world'
 
-// // 2.test() - Returns true or false if there is a match
+// // 3.test() - Returns true or false if there is a match
 // const result = re.test('Hello');
 // console.log(result); //returns false since it has uppercase H in 'Hello'. you can use flag i for case insensitive to return true.
 
-// // 3.match() - Return result array or null
+// // 4.match() - Return result array or null
 // const str = 'Hello There';
 // const result = str.match(re);
 // console.log(result); 
 
-// 4.search() - Returns index of the first match if not found retuns -1
+// // 5.search() - Returns index of the first match if not found retuns -1
 // const str = 'Brad Hello There';
 // const result = str.search(re);
 // console.log(result);
 
-// 5.replace() - Return new string with some or all matches of a pattern
+// // 6.replace() - Return new string with some or all matches of a pattern
 // const str = 'Hello There';
 // const newStr = str.replace(re, 'Hi');
-// console.log(newStr);
+// console.log(newStr); // returns 'Hi There'
+
+// // III.Regular expressions: Metacharacter Symbols
+let re;
+// Literal Characters
+re = /hello/;
+re = /hello/i; // i  - case insensitive
+
+// Metacharacter Symbols
+re = /^h/i;           // Must start with
+re = / world$/i;     // Must end with 'world'
+re = /^hello$/i;     // Must begin and end with
+re = /h.llo/i;      // Matches any ONE character
+re = /h*llo/i;      // Matches any character 0 or more times
+re = /gre?a?y/i;    // Optional character for gray or grey using ? as optional
+re = /gre?a?y\?/i;    // Escape character 
+
+
+// String to match
+const str = 'Gray?'; //Ex: Grey, Gray, Gry match /gre?a?y/i. Griy doesn't.
+
+
+// Log Results
+const result = re.exec(str);
+console.log(result);
+
+function reTest(re, str) {
+  if(re.test(str)) {
+    console.log(`${str} matches ${re.source}`);
+  } else {
+    console.log(`${str} does NOT match ${re.source}`);
+  }
+}
+
+reTest(re, str);
