@@ -1,7 +1,7 @@
 // Init storage
 const storage = new Storage()
 
-//get stored location data
+// Get stored location data
 const weatherLocation = storage.getLocationData()
 
 // 1.Init weather object
