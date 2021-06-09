@@ -18,7 +18,7 @@ function validateName() {
 
 function validateZip() {
   const zip = document.getElementById('zip');
-  const re = /^[0-9]{5}(-[0-9]{4})?$/;
+  const re = /^[0-9]{5}(-[0-9]{4})?$/; //Ex: 00000-0000
 
   if(!re.test(zip.value)){
     zip.classList.add('is-invalid');
@@ -40,7 +40,7 @@ function validateEmail() {
 
 function validatePhone() {
   const phone = document.getElementById('phone');
-  const re = /^\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/;
+  const re = /^\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/; // anything before ? - optional and after \ - literal
 
   if(!re.test(phone.value)){
     phone.classList.add('is-invalid');
