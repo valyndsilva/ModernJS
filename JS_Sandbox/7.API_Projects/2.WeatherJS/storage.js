@@ -22,6 +22,7 @@ class Storage {
     }
   
     setLocationData(city, country) {
+        //Since we save city and countryas a string no need to parse using JSON.stringify()
       localStorage.setItem('city', city)
       localStorage.setItem('country', country)
     }
