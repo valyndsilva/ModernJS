@@ -53,7 +53,7 @@
 //   console.log(gen.next().value);
 //   console.log(gen.next().value);
 
-// // // III. Symbols 
+// // // III. ES6 Symbols 
 
 // //Create a Symbol:
 // // const sym1 = Symbol(); //Symbol() is a primitive value so you don't add 'new' before Symbol()
@@ -90,7 +90,7 @@
 // console.log(JSON.stringify({[Symbol('sym1')]: 'prop'})); // return empty object - {}
 
 
-// // // IV.Destructuring Assignment
+// // // IV. ES6 Destructuring Assignment
 // let a, b;
 // [a, b] = [100, 200];
 
@@ -144,7 +144,7 @@
 // sayHello();
 
 
-// // V. MAPS = key-value pairs - can use ANY type as a key or value
+// // V. ES6 MAPS = key-value pairs - can use ANY type as a key or value
 
 const map1 = new Map();
 
