@@ -1,4 +1,4 @@
-// Iterator Example
+// // I.Iterator Example
 // function nameIterator(names) {
 //   let nextIndex = 0;
 
@@ -21,7 +21,7 @@
 // console.log(names.next().value);
 // console.log(names.next().value);
 
-// Generator Example
+// // II.Generator Example: Functions that can return multiple yield values. * makes it a generator
 // function* sayNames() {
 //   yield 'Jack';
 //   yield 'Jill';
@@ -35,7 +35,7 @@
 // console.log(name.next().value);
 // console.log(name.next().value);
 
-// ID Creator
+// // ID Creator
 function* createIds() {
     let index = 1;
   
