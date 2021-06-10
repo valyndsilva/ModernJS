@@ -149,9 +149,9 @@
 const map1 = new Map();
 
 // Set Keys
-const key1 = 'some string',
-      key2 = {},
-      key3 = function() {};
+const key1 = 'some string', 
+      key2 = {},  //empty object
+      key3 = function() {}; // empty function
 
 // Set map values by key
 map1.set(key1, 'Value of key1');
