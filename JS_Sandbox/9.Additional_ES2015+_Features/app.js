@@ -90,53 +90,56 @@
 // console.log(JSON.stringify({[Symbol('sym1')]: 'prop'})); // return empty object - {}
 
 
-// // IV.Destructuring Assignment
-let a, b;
-[a, b] = [100, 200];
-// Rest pattern
-[a, b, c, ...rest] = [100, 200, 300, 400, 500];
+// // // IV.Destructuring Assignment
+// let a, b;
+// [a, b] = [100, 200];
 
-({ a, b } = { a: 100, b: 200, c: 300, d: 400, e: 500 });
-({ a, b, ...rest} = { a: 100, b: 200, c: 300, d: 400, e: 500 });
+// // Rest pattern 
+// [a, b, c, ...rest] = [100, 200, 300, 400, 500]; // ... is a spread operator
+// console.log(b);
+// //assigns remaining leftover into an array called rest
+// console.log(rest);
 
-// Array Destructuring
+// // Expression in ()
+// ({ a, b } = { a: 100, b: 200, c: 300, d: 400, e: 500 });
+// console.log(a,b);
+// ({ a, b, ...rest} = { a: 100, b: 200, c: 300, d: 400, e: 500 });
+// console.log(rest);
 
-// const people = ['John', 'Beth', 'Mike'];
+// // IVa.Array Destructuring
 
-// const [person1, person2, person3] = people;
+// // const people = ['John', 'Beth', 'Mike'];
+// // const [person1, person2, person3] = people;
+// // console.log(person1, person2, person3);
 
-// console.log(person1, person2, person3);
+// // Parse an array returned from a function
+// // function getPeople() {
+// //   return ['John', 'Beth', 'Mike'];
+// // }
+// // let person1, person2, person3;
+// // [person1, person2, person3] = getPeople();
+// // console.log(person1, person2, person3);
 
-// Parse array returned from function
-// function getPeople() {
-//   return ['John', 'Beth', 'Mike'];
+// // IVb.Object Destructuring
+
+// const person = {
+//   name: 'John Doe',
+//   age: 32,
+//   city: 'Miami',
+//   gender: 'Male',
+//   sayHello: function(){
+//     console.log('Hello');
+//   }
 // }
 
-// let person1, person2, person3;
-// [person1, person2, person3] = getPeople();
+// // Old ES5
+// // const name = person.name,
+// //       age = person.age,
+// //       city = person.city;
 
-// console.log(person1, person2, person3);
+// // New ES6 Destructuring
+// const { name, age, city, sayHello } = person;
 
-// Object Destructuring
+// console.log(name, age, city);
 
-const person = {
-  name: 'John Doe',
-  age: 32,
-  city: 'Miami',
-  gender: 'Male',
-  sayHello: function(){
-    console.log('Hello');
-  }
-}
-
-// Old ES5
-// const name = person.name,
-//       age = person.age,
-//       city = person.city;
-
-// New ES6 Destructuring
-const { name, age, city, sayHello } = person;
-
-console.log(name, age, city);
-
-sayHello();
+// sayHello();
