@@ -2,6 +2,7 @@
 // Creates an interface to communicate with colleagues which are just mediated objects. 
 // Ex: Chat room. You can use socket.io to build a project.
 
+// 1. Create a constructor User:
 const User = function(name) {
     this.name = name;
     this.chatroom = null;
@@ -15,7 +16,7 @@ const User = function(name) {
       console.log(`${from.name} to ${this.name}: ${message}`);
     }
   }
-  
+// 2. Create a constructor Chatroom: 
   const Chatroom = function() {
     let users = {}; // list of users
   
@@ -26,12 +27,12 @@ const User = function(name) {
       },
       send: function(message, from, to) {
         if(to) {
-          // Single user message
+          // Single user receives message
           to.recieve(message, from);
         } else {
-          // Mass message
+          // Multiple users receive message
           for(key in users) {
-            if(users[key] !== from) {
+            if(users[key] !== from) { //make sure it's not from the user sending the message.
               users[key].recieve(message, from);
             }
           }
@@ -40,17 +41,17 @@ const User = function(name) {
     }
   }
   
-  const brad = new User('Brad');
+  const val = new User('Val');
   const jeff = new User('Jeff');
   const sara = new User('Sara');
   
   const chatroom = new Chatroom();
   
-  chatroom.register(brad);
+  chatroom.register(val);
   chatroom.register(jeff);
   chatroom.register(sara);
   
-  brad.send('Hello Jeff', jeff);
-  sara.send('Hello Brad, you are the best dev ever!', brad);
-  jeff.send('Hello Everyone!!!!');
+  val.send('Hello Jeff', jeff);
+  sara.send('Hello Valyn, you are the best dev ever!', val);
+  jeff.send('Hello Everyone!!!!'); // sends to everyone except himself
   
