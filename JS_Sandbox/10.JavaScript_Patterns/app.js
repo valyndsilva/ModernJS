@@ -105,10 +105,10 @@
 
   // // III.FACTORY PATTERN:
   // //  A way of creating an interface for creating objects but let subclasses to define which classes to instantiate
-  // // Factory methods are used in applications to manage, maintain, manipulate collections of objects that are different but have common characteristics. Ex: Member
+  // // Factory methods are used in applications to manage, maintain, manipulate collections of objects that are different but have common characteristics. 
+  // Ex: Memberships. Create a MemberFactory that takes a member type and creates a new object based on that type.
   function MemberFactory() {
-    
-    this.createMember = function(name, type) {
+    this.createMember = function(name, type) { //function expression
       let member;
   
       if(type === 'simple') {
