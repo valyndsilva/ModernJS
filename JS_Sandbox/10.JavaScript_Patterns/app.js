@@ -70,35 +70,90 @@
 //   console.log(ItemCtrl.get(2));
 
 
-// II. SINGLETON PATTERN:
-// A manifestation of module pattern. 
-// A singleton object is an anonymous functions and can only return 1 instance of an object at a time.
-// Repeated calls to the constructor will return the same instance. You can never more than one instance.
-// Like the module pattern it maintains a private reference which cannot be accessed from the outside.
-// Commong uses of singleton pattern is when you want to create 1 user object at a time, 1 logged in user, prevent from having 2 users created at once.
-// It gives a global point of access instead of using encapsulation so this pattern is not used among developers as much and is pretty hard to debug.
-const Singleton = (function() { //set to IIFE
-    let instance;
+// // II. SINGLETON PATTERN:
+// // A manifestation of module pattern. 
+// // A singleton object is an anonymous functions and can only return 1 instance of an object at a time.
+// // Repeated calls to the constructor will return the same instance. You can never more than one instance.
+// // Like the module pattern it maintains a private reference which cannot be accessed from the outside.
+// // Commong uses of singleton pattern is when you want to create 1 user object at a time, 1 logged in user, prevent from having 2 users created at once.
+// // It gives a global point of access instead of using encapsulation so this pattern is not used among developers as much and is pretty hard to debug.
+// const Singleton = (function() { //set to IIFE
+//     let instance;
   
-    function createInstance() {
-        // const object = new Object('Object instance!!!');
-        const object = new Object({name:'Maria'});
-      return object;
-    }
+//     function createInstance() {
+//         // const object = new Object('Object instance!!!');
+//         const object = new Object({name:'Maria'});
+//       return object;
+//     }
   
-    return {
-      getInstance: function() {
-        if(!instance){
-          instance = createInstance();
-        }
-        return instance;
+//     return {
+//       getInstance: function() {
+//         if(!instance){
+//           instance = createInstance();
+//         }
+//         return instance;
+//       }
+//     }
+//   })();
+  
+//   const instanceA = Singleton.getInstance();
+//   const instanceB = Singleton.getInstance();
+  
+//   console.log(instanceA === instanceB); //true
+  
+//   // console.log(instanceA);
+
+  // // III.FACTORY PATTERN:
+  // //  A way of creating an interface for creating objects but let subclasses to define which classes to instantiate
+  // // Factory methods are used in applications to manage, maintain, manipulate collections of objects that are different but have common characteristics. Ex: Member
+  function MemberFactory() {
+    
+    this.createMember = function(name, type) {
+      let member;
+  
+      if(type === 'simple') {
+        member = new SimpleMembership(name);
+      } else if (type === 'standard') {
+        member = new StandardMembership(name);
+      } else if (type === 'super') {
+        member = new SuperMembership(name);
       }
+  
+      member.type = type;
+  
+      member.define =  function() {
+        console.log(`${this.name} (${this.type}): ${this.cost}`);
+      }
+  
+      return member;
     }
-  })();
+  }
   
-  const instanceA = Singleton.getInstance();
-  const instanceB = Singleton.getInstance();
+  const SimpleMembership = function(name) {
+    this.name = name;
+    this.cost = '$5';
+  }
   
-  console.log(instanceA === instanceB); //true
+  const StandardMembership = function(name) {
+    this.name = name;
+    this.cost = '$15';
+  }
   
-  // console.log(instanceA);
+  const SuperMembership = function(name) {
+    this.name = name;
+    this.cost = '$25';
+  }
+  
+  const members = [];
+  const factory = new MemberFactory();
+  
+  members.push(factory.createMember('John Doe', 'simple'));
+  members.push(factory.createMember('Chris Jackson', 'super'));
+  members.push(factory.createMember('Janice Williams', 'simple'));
+  members.push(factory.createMember('Tom Smith', 'standard'));
+  
+  // console.log(members);
+  
+  members.forEach(function(member) {
+    member.define();
+  });
