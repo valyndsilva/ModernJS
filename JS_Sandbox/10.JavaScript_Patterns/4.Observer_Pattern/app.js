@@ -4,8 +4,8 @@
   // This pattern can be used to notify the DOM of certain elements to be updated. AngularJS uses this pattern heavily through event management within the scope.
   
   // Ex using ES5 prototypes:
-  function EventObserver() {
-    this.observers = [];
+  function EventObserver() { //constructor function
+    this.observers = []; // property
   }
   
   EventObserver.prototype = {
