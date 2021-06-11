@@ -1,3 +1,9 @@
+
+  // IV. OBSERVER PATTERN:
+  // Allows to subscribe or unsubscribe to certain events or functionality. Gives a good subscription model.
+  // This pattern can be used to notify the DOM of certain elements to be updated. AngularJS uses this pattern heavily through event management within the scope.
+  
+  // Ex using ES6 Classes:
 class EventObserver {
     constructor() {
       this.observers = [];
