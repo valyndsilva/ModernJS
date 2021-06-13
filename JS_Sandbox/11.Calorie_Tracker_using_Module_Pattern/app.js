@@ -50,7 +50,7 @@ const ItemCtrl = (function(){ //IIFE function
             } else {
               ID = 0;
             }
-      
+            
             // Convert Calories from string to number
             calories = parseInt(calories);
       
@@ -62,6 +62,22 @@ const ItemCtrl = (function(){ //IIFE function
             
             // return
             return newItem;
+          },
+          getItemById: function(id){
+            let found = null;
+            // Loop through items
+            data.items.forEach(function(item){
+              if(item.id === id){
+                found = item;
+              }
+            });
+            return found;
+          },
+          setCurrentItem: function(item){
+            data.currentItem = item;
+          },
+          getCurrentItem: function(){
+            return data.currentItem;
           },
           getTotalCalories: function(){
             let total = 0;
@@ -151,6 +167,11 @@ const UICtrl = (function(){ //IIFE function
           document.querySelector(UISelectors.itemNameInput).value = '';
           document.querySelector(UISelectors.itemCaloriesInput).value = '';
         },
+        addItemToForm: function(){
+          document.querySelector(UISelectors.itemNameInput).value = ItemCtrl.getCurrentItem().name;
+          document.querySelector(UISelectors.itemCaloriesInput).value = ItemCtrl.getCurrentItem().calories;
+          UICtrl.showEditState();
+        },
         // Create hideList
         hideList: function(){
           document.querySelector(UISelectors.itemList).style.display = 'none';
@@ -232,20 +253,27 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
       
   // Update item submit
   const itemUpdateSubmit = function(e){
+    // console.log('test');
+
     // Target the edit icon
     if(e.target.classList.contains('edit-item')){
+      // console.log('edit-item');
       // Get list item id (item-0, item-1)
-      const listId = e.target.parentNode.parentNode.id;
-
+      const listId = e.target.parentNode.parentNode.id; // i > a(Parent node) > li(Parent node).id
+ // Get a regular id ex: 0 instead of item-0:
       // Break into an array
       const listIdArr = listId.split('-');
 
+      // console.log(listIdArr); [1] holds the id
+    
       // Get the actual id
       const id = parseInt(listIdArr[1]);
 
       // Get item
       const itemToEdit = ItemCtrl.getItemById(id);
 
+      // console.log(itemToEdit);
+    
       // Set current item
       ItemCtrl.setCurrentItem(itemToEdit);
 
