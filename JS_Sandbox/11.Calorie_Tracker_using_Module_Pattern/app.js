@@ -91,7 +91,13 @@ const UICtrl = (function(){ //IIFE function
         itemList: '#item-list', 
         // Add btn
         addBtn: '.add-btn',
-        // Name the inputs
+       // Update btn
+        updateBtn: '.update-btn',
+       // Delete btn
+        deleteBtn: '.delete-btn',
+       // Back btn
+        deleteBtn: '.back-btn',
+        // inputs
         itemNameInput: '#item-name',
         itemCaloriesInput: '#item-calories',
         totalCalories: '.total-calories'
