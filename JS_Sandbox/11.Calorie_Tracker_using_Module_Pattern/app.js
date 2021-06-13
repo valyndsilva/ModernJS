@@ -16,30 +16,40 @@ const StorageCtrl = (function(){
 
   //public methods
   return{
-    storeItem:function(item){// IIFE function
-    let items = [];
-    
-    // localStorage only holds a string. To set a value you use JSON.stringify to convert the array of object to string.
-    // To get the value from localStorage you need to convert the string back into an object using JSON.Parse
+      storeItem:function(item){// IIFE function
+      let items;
+      // localStorage only holds a string. 
+      // To set a value you use JSON.stringify to convert the array of object to string.
+      // To get the value from localStorage you need to convert the string back into an object using JSON.Parse
 
-    //Check if any items in localStorage
-    if(localStorage.getItem('items') === null){
-        items =  [];
-        //Push new item
-        items.push(item);
-        // Set to localStorage
-        localStorage.setItem('items', JSON.stringify(items));
-      } else {
-        // Get what is already in localStorage 
-        items = JSON.parse(localStorage.getItem('items')); //convert string output to object using JSON.parse()
+      //Check if any items in localStorage
+      if(localStorage.getItem('items') === null){
+          items =  [];
+          //Push new item
+          items.push(item);
+          // Set to localStorage
+          localStorage.setItem('items', JSON.stringify(items));
+        } else {
+          // Get what is already in localStorage 
+          items = JSON.parse(localStorage.getItem('items')); //convert string output to object using JSON.parse()
 
-        //Push new item on
-        items.push(item);
+          //Push new item on
+          items.push(item);
 
-        // Reset localStorage
-        localStorage.setItem('items', JSON.stringify(items));
+          // Reset localStorage
+          localStorage.setItem('items', JSON.stringify(items));
+        }
+      },
+      getItemsFromStorage: function(){
+        let items;
+        if(localStorage.getItem('items') === null){
+      items = [];
+        } else {
+          items = JSON.parse(localStorage.getItem('items'));
+        }
+        return items;
       }
-    }
+
   }
 })(); 
 
@@ -55,11 +65,12 @@ const ItemCtrl = (function(){ //IIFE function
     // Data Structure / State
     // Private data
     const data = { //(data is private and not directly accessible through Chrome) Ex: ItemCtrl.data returns "Uncaught TypeError:cannot read property data"
-        items: [
-          // {id: 0, name: 'Steak Dinner', calories: 1200},
-          // {id: 1, name: 'Cookie', calories: 400},
-          // {id: 2, name: 'Eggs', calories: 300}
-        ],
+        // items: [
+        //   // {id: 0, name: 'Steak Dinner', calories: 1200},
+        //   // {id: 1, name: 'Cookie', calories: 400},
+        //   // {id: 2, name: 'Eggs', calories: 300}
+        // ],
+        items: StorageCtrl.getItemsFromStorage(),
         currentItem: null,
         totalCalories: 0
       }
