@@ -16,29 +16,32 @@ const StorageCtrl = (function(){
 
   //public methods
   return{
-    storeItem:function(item){
+    storeItem:function(item){// IIFE function
     let items = [];
     
     // localStorage only holds a string. To set a value you use JSON.stringify to convert the array of object to string.
     // To get the value from localStorage you need to convert the string back into an object using JSON.Parse
 
     //Check if any items in localStorage
-    if(localStorage.getItem('items')===null){
+    if(localStorage.getItem('items') === null){
         items =  [];
         //Push new item
         items.push(item);
         // Set to localStorage
         localStorage.setItem('items', JSON.stringify(items));
-      } else{
-        // Get the items 
+      } else {
+        // Get what is already in localStorage 
         items = JSON.parse(localStorage.getItem('items')); //convert string output to object using JSON.parse()
 
-        //Push new item
+        //Push new item on
         items.push(item);
+
+        // Reset localStorage
+        localStorage.setItem('items', JSON.stringify(items));
       }
     }
   }
-})
+})(); 
 
 
 // I.Item Controller (for local data) (using Module pattern) 
