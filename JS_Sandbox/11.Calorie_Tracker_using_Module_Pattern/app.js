@@ -194,6 +194,9 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
   
       // Add item event
       document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
+
+      // Edit icon click event
+    document.querySelector(UISelectors.itemList).addEventListener('click', itemUpdateSubmit);
     }
   
     // Add item submit
@@ -225,10 +228,42 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
     }
       e.preventDefault();
     }
+
+      
+  // Update item submit
+  const itemUpdateSubmit = function(e){
+    // Target the edit icon
+    if(e.target.classList.contains('edit-item')){
+      // Get list item id (item-0, item-1)
+      const listId = e.target.parentNode.parentNode.id;
+
+      // Break into an array
+      const listIdArr = listId.split('-');
+
+      // Get the actual id
+      const id = parseInt(listIdArr[1]);
+
+      // Get item
+      const itemToEdit = ItemCtrl.getItemById(id);
+
+      // Set current item
+      ItemCtrl.setCurrentItem(itemToEdit);
+
+      // Add item to form
+      UICtrl.addItemToForm();
+    }
+
+    e.preventDefault();
+  }
+
+
 // Public methods
   return {
     init: function(){
-       // Fetch items from data structure
+      // Clear edit state / set initial set
+      UICtrl.clearEditState();
+
+     // Fetch items from data structure
       const items = ItemCtrl.getItems();
       //   console.log(items);
 
