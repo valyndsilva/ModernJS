@@ -42,12 +42,13 @@ const ItemCtrl = (function(){
             // 24.Convert Calories from string to number
             calories = parseInt(calories);
       
-            // Create new item
+            // 25.Create new item (call Item constructor)
             newItem = new Item(ID, name, calories);
       
-            // Add to items array
+            // 26.Add to items array
             data.items.push(newItem);
-      
+            
+            //27. return
             return newItem;
           },
           logData: function(){
@@ -71,7 +72,7 @@ const UICtrl = (function(){
       
       // Public methods
       return {
-        // 6. populateItemList
+        // 6. Create populateItemList
         populateItemList: function(items){
           let html = '';
     
@@ -79,7 +80,7 @@ const UICtrl = (function(){
             html += `<li class="collection-item" id="item-${item.id}">
             <strong>${item.name}: </strong> <em>${item.calories} Calories</em>
             <a href="#" class="secondary-content">
-              <i class="edit-item fa fa-pencil"></i>
+              <i class="edit-item fas fa-pencil-alt"></i>
             </a>
           </li>`;
           });
@@ -93,6 +94,32 @@ const UICtrl = (function(){
             name:document.querySelector(UISelectors.itemNameInput).value,
             calories:document.querySelector(UISelectors.itemCaloriesInput).value
           }
+        },
+        // 28. Create addListItem
+        addListItem: function(item){
+          // Show the list
+          document.querySelector(UISelectors.itemList).style.display = 'block';
+          // Create li element
+          const li = document.createElement('li');
+          // Add class
+          li.className = 'collection-item';
+          // Add ID
+          li.id = `item-${item.id}`;
+          // Add HTML
+          li.innerHTML = `<strong>${item.name}: </strong> <em>${item.calories} Calories</em>
+          <a href="#" class="secondary-content">
+            <i class="edit-item fas fa-pencil-alt"></i>
+          </a>`;
+          // Insert item into DOM
+          document.querySelector(UISelectors.itemList).insertAdjacentElement('beforeend', li)
+        },
+        //30. Create clearInput
+        clearInput: function(){
+          document.querySelector(UISelectors.itemNameInput).value = '';
+          document.querySelector(UISelectors.itemCaloriesInput).value = '';
+        },
+        hideList: function(){
+          document.querySelector(UISelectors.itemList).style.display = 'none';
         },
          // 10.Create public method to access the UISelectors later in AppCtrl
         getSelectors: function(){
@@ -129,8 +156,13 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
       if(input.name !== '' && input.calories !== ''){
         // 22.Add item
         const newItem = ItemCtrl.addItem(input.name, input.calories);
-      }
-  
+     
+      // 29.Add item to UI list
+      UICtrl.addListItem(newItem);
+
+      // 31.Clear fields
+      UICtrl.clearInput();
+    }
       e.preventDefault();
     }
 // Public methods
