@@ -4,13 +4,13 @@
 
 // Item Controller (for local data) (using Module pattern) 
 const ItemCtrl = (function(){
-  // Item Constructor
+  // 1.Item Constructor
   const Item = function(id, name, calories){
     this.id = id;
     this.name = name;
     this.calories = calories;
   }
-    // Data Structure / State
+    // 2.Data Structure / State
     // Private data
     const data = { //(data is private and not directly accessible through Chrome) Ex: ItemCtrl.data returns "Uncaught TypeError:cannot read property data"
         items: [
@@ -27,6 +27,29 @@ const ItemCtrl = (function(){
           getItems:function(){
               return data.items;
           },
+          // 21.Create addItem method
+          addItem: function(name, calories){
+            // console.log(name,calories);
+
+          // 23.Create ID
+            let ID;
+            if(data.items.length > 0){
+              ID = data.items[data.items.length - 1].id + 1;
+            } else {
+              ID = 0;
+            }
+      
+            // 24.Convert Calories from string to number
+            calories = parseInt(calories);
+      
+            // Create new item
+            newItem = new Item(ID, name, calories);
+      
+            // Add to items array
+            data.items.push(newItem);
+      
+            return newItem;
+          },
           logData: function(){
           return data; //data can be accessed at this stage through ItemCtrl.logData()
         }
@@ -36,12 +59,19 @@ const ItemCtrl = (function(){
 
 // UI Controller (UI functioning (showing, hiding things etc))
 const UICtrl = (function(){
-    const UISelectors = {
-        itemList: '#item-list'
+  //7.UISelectors
+    const UISelectors = { // private 
+        itemList: '#item-list', 
+        // 12. Add btn
+        addBtn: '.add-btn',
+        //17. Name the inputs
+        itemNameInput: '#item-name',
+        itemCaloriesInput: '#item-calories'
       }
       
       // Public methods
       return {
+        // 6. populateItemList
         populateItemList: function(items){
           let html = '';
     
@@ -54,30 +84,71 @@ const UICtrl = (function(){
           </li>`;
           });
     
-          // Insert list items
+          // 8.Insert list items
           document.querySelector(UISelectors.itemList).innerHTML = html;
-        }
+        },
+        //18. get values from the form
+        getItemInput: function(){
+          return {
+            name:document.querySelector(UISelectors.itemNameInput).value,
+            calories:document.querySelector(UISelectors.itemCaloriesInput).value
+          }
+        },
+         // 10.Create public method to access the UISelectors later in AppCtrl
+        getSelectors: function(){
+          return UISelectors;
       }
+    }
 })();
 
 
 // App Controller (connect everything, event listeners, init function)
 const AppCtrl = (function(ItemCtrl, UICtrl){
     // console.log(ItemCtrl.logData()); //outputs the data
+
+    // 9.Load event listeners
+    const loadEventListeners = function(){
+
+      // 11.Get UI selectors
+      const UISelectors = UICtrl.getSelectors();
   
+      // 13.Add item event
+      document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
+    }
+  
+    // 14.Add item submit
+    const itemAddSubmit = function(e){
+      //16.test
+      // console.log('Add');
+
+      // 19.Get form input from UI Controller
+      const input = UICtrl.getItemInput();
+      // console.log(input);
+
+      //20.Check for name and calorie input
+      if(input.name !== '' && input.calories !== ''){
+        // 22.Add item
+        const newItem = ItemCtrl.addItem(input.name, input.calories);
+      }
+  
+      e.preventDefault();
+    }
 // Public methods
   return {
     init: function(){
-       // 2.Fetch items from data structure
+       // 4.Fetch items from data structure
       const items = ItemCtrl.getItems();
       //   console.log(items);
 
-      // 3.Populate list with items
+      // 5.Populate list with items
       UICtrl.populateItemList(items);
+
+      // 15.Load event listeners
+      loadEventListeners();
     }
   }
   
 })(ItemCtrl, UICtrl);
 
-// 1.Initialize App
-App.init();
+// 3.Initialize App
+AppCtrl.init();
