@@ -20,7 +20,7 @@ const StorageCtrl = (function(){
     let items = [];
     
     // localStorage only holds a string. To set a value you use JSON.stringify to convert the array of object to string.
-    // To get the value from LocalStorage you need to convert the string back into an object using JSON.Parse
+    // To get the value from localStorage you need to convert the string back into an object using JSON.Parse
 
     //Check if any items in localStorage
     if(localStorage.getItem('items')===null){
