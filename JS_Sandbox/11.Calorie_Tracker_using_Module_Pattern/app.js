@@ -149,8 +149,24 @@ const UICtrl = (function(){ //IIFE function
         hideList: function(){
           document.querySelector(UISelectors.itemList).style.display = 'none';
         },
+         // Create showTotalCalories
         showTotalCalories: function(totalCalories){
           document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
+        },
+        // Create clearEditState
+        clearEditState: function(){
+          UICtrl.clearInput();
+          document.querySelector(UISelectors.updateBtn).style.display = 'none';
+          document.querySelector(UISelectors.deleteBtn).style.display = 'none';
+          document.querySelector(UISelectors.backBtn).style.display = 'none';
+          document.querySelector(UISelectors.addBtn).style.display = 'inline';
+        },
+        //Create showEditState
+        showEditState: function(){
+          document.querySelector(UISelectors.updateBtn).style.display = 'inline';
+          document.querySelector(UISelectors.deleteBtn).style.display = 'inline';
+          document.querySelector(UISelectors.backBtn).style.display = 'inline';
+          document.querySelector(UISelectors.addBtn).style.display = 'none';
         },
          // Create public method to access the UISelectors later in AppCtrl
         getSelectors: function(){
