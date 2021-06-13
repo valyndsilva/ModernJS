@@ -14,9 +14,9 @@ const ItemCtrl = (function(){
     // Private data
     const data = { //(data is private and not directly accessible through Chrome) Ex: ItemCtrl.data returns "Uncaught TypeError:cannot read property data"
         items: [
-          {id: 0, name: 'Steak Dinner', calories: 1200},
-          {id: 1, name: 'Cookie', calories: 400},
-          {id: 2, name: 'Eggs', calories: 300}
+          // {id: 0, name: 'Steak Dinner', calories: 1200},
+          // {id: 1, name: 'Cookie', calories: 400},
+          // {id: 2, name: 'Eggs', calories: 300}
         ],
         currentItem: null,
         totalCalories: 0
@@ -97,7 +97,7 @@ const UICtrl = (function(){
         },
         // 28. Create addListItem
         addListItem: function(item){
-          // Show the list
+          // 33.Show the list
           document.querySelector(UISelectors.itemList).style.display = 'block';
           // Create li element
           const li = document.createElement('li');
@@ -118,6 +118,7 @@ const UICtrl = (function(){
           document.querySelector(UISelectors.itemNameInput).value = '';
           document.querySelector(UISelectors.itemCaloriesInput).value = '';
         },
+        //32. Create hideList
         hideList: function(){
           document.querySelector(UISelectors.itemList).style.display = 'none';
         },
@@ -172,9 +173,13 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
       const items = ItemCtrl.getItems();
       //   console.log(items);
 
+      // 34.Check if any items
+      if(items.length === 0){
+        UICtrl.hideList();
+      } else {
       // 5.Populate list with items
       UICtrl.populateItemList(items);
-
+      }
       // 15.Load event listeners
       loadEventListeners();
     }
