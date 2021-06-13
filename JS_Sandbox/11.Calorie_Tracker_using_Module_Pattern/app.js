@@ -1,16 +1,28 @@
+// Step 1: Create UI (HTML)
+// Step 2: Create the Controllers and Data Structures
+// Step 3: Get and Populate Items
+// Step 4: Add Item to Data Structure
+// Step 5: Add Item to UI
+// Step 6: Add Total Calories
+// Step 7: Edit State
+// Step 8: Update Items and Total Calories
+// Step 9: Delete and Clear Items
+// Step 10: Add and Get From Local Storage
+// Step 11: Delete and Clear From Local Storage
+// Extra Notes: we need Item, UI, App and Local Storage Controllers.
 // IV. Storage Controller (for local storage)
 
 
 
 // I.Item Controller (for local data) (using Module pattern) 
 const ItemCtrl = (function(){ //IIFE function
-  // 1.Item Constructor
+  // Item Constructor
   const Item = function(id, name, calories){
     this.id = id;
     this.name = name;
     this.calories = calories;
   }
-    // 2.Data Structure / State
+    // Data Structure / State
     // Private data
     const data = { //(data is private and not directly accessible through Chrome) Ex: ItemCtrl.data returns "Uncaught TypeError:cannot read property data"
         items: [
@@ -27,11 +39,11 @@ const ItemCtrl = (function(){ //IIFE function
           getItems:function(){
               return data.items;
           },
-          // 21.Create addItem method
+          // Create addItem method
           addItem: function(name, calories){
             // console.log(name,calories);
 
-          // 23.Create ID
+          // Create ID
             let ID;
             if(data.items.length > 0){
               ID = data.items[data.items.length - 1].id + 1;
@@ -39,17 +51,31 @@ const ItemCtrl = (function(){ //IIFE function
               ID = 0;
             }
       
-            // 24.Convert Calories from string to number
+            // Convert Calories from string to number
             calories = parseInt(calories);
       
-            // 25.Create new item (call Item constructor)
+            // Create new item (call Item constructor)
             newItem = new Item(ID, name, calories);
       
-            // 26.Add to items array
+            // Add to items array
             data.items.push(newItem);
             
-            //27. return
+            // return
             return newItem;
+          },
+          getTotalCalories: function(){
+            let total = 0;
+
+            // Loop through items and add cals
+            data.items.forEach(function(item){
+              total += item.calories; //  total = total + item.calories;
+            });
+
+            // Set total cal in data structure
+            data.totalCalories = total;
+
+            // Return total
+            return data.totalCalories;
           },
           logData: function(){
           return data; //data can be accessed at this stage through ItemCtrl.logData()
@@ -59,20 +85,21 @@ const ItemCtrl = (function(){ //IIFE function
 
 
 // II. UI Controller (UI functioning (showing, hiding things etc))
-const UICtrl = (function(){
-  //7.UISelectors
+const UICtrl = (function(){ //IIFE function
+  // UISelectors
     const UISelectors = { // private 
         itemList: '#item-list', 
-        // 12. Add btn
+        // Add btn
         addBtn: '.add-btn',
-        //17. Name the inputs
+        // Name the inputs
         itemNameInput: '#item-name',
-        itemCaloriesInput: '#item-calories'
+        itemCaloriesInput: '#item-calories',
+        totalCalories: '.total-calories'
       }
       
       // Public methods
       return {
-        // 6. Create populateItemList
+        // Create populateItemList
         populateItemList: function(items){
           let html = '';
     
@@ -85,19 +112,19 @@ const UICtrl = (function(){
           </li>`;
           });
     
-          // 8.Insert list items
+          // Insert list items
           document.querySelector(UISelectors.itemList).innerHTML = html;
         },
-        //18. get values from the form
+        // get values from the form
         getItemInput: function(){
           return {
             name:document.querySelector(UISelectors.itemNameInput).value,
             calories:document.querySelector(UISelectors.itemCaloriesInput).value
           }
         },
-        // 28. Create addListItem
+        // Create addListItem
         addListItem: function(item){
-          // 33.Show the list
+          // Show the list
           document.querySelector(UISelectors.itemList).style.display = 'block';
           // Create li element
           const li = document.createElement('li');
@@ -113,16 +140,19 @@ const UICtrl = (function(){
           // Insert item into DOM
           document.querySelector(UISelectors.itemList).insertAdjacentElement('beforeend', li)
         },
-        //30. Create clearInput
+        // Create clearInput
         clearInput: function(){
           document.querySelector(UISelectors.itemNameInput).value = '';
           document.querySelector(UISelectors.itemCaloriesInput).value = '';
         },
-        //32. Create hideList
+        // Create hideList
         hideList: function(){
           document.querySelector(UISelectors.itemList).style.display = 'none';
         },
-         // 10.Create public method to access the UISelectors later in AppCtrl
+        showTotalCalories: function(totalCalories){
+          document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
+        },
+         // Create public method to access the UISelectors later in AppCtrl
         getSelectors: function(){
           return UISelectors;
       }
@@ -134,34 +164,41 @@ const UICtrl = (function(){
 const AppCtrl = (function(ItemCtrl, UICtrl){
     // console.log(ItemCtrl.logData()); //outputs the data
 
-    // 9.Load event listeners
+    // Load event listeners
     const loadEventListeners = function(){
 
-      // 11.Get UI selectors
+      // Get UI selectors
       const UISelectors = UICtrl.getSelectors();
   
-      // 13.Add item event
+      // Add item event
       document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
     }
   
-    // 14.Add item submit
+    // Add item submit
     const itemAddSubmit = function(e){
-      //16.test
+
+      //test
       // console.log('Add');
 
-      // 19.Get form input from UI Controller
+      // Get form input from UI Controller
       const input = UICtrl.getItemInput();
       // console.log(input);
 
-      //20.Check for name and calorie input
+      //Check for name and calorie input
       if(input.name !== '' && input.calories !== ''){
-        // 22.Add item
+        // Add item
         const newItem = ItemCtrl.addItem(input.name, input.calories);
      
-      // 29.Add item to UI list
+      // Add item to UI list
       UICtrl.addListItem(newItem);
 
-      // 31.Clear fields
+      // Get total calories
+      const totalCalories = ItemCtrl.getTotalCalories();
+
+      // Add total calories to UI
+      UICtrl.showTotalCalories(totalCalories);
+
+      // Clear fields
       UICtrl.clearInput();
     }
       e.preventDefault();
@@ -169,23 +206,29 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
 // Public methods
   return {
     init: function(){
-       // 4.Fetch items from data structure
+       // Fetch items from data structure
       const items = ItemCtrl.getItems();
       //   console.log(items);
 
-      // 34.Check if any items
+      // Check if any items
       if(items.length === 0){
         UICtrl.hideList();
       } else {
-      // 5.Populate list with items
+      // Populate list with items
       UICtrl.populateItemList(items);
       }
-      // 15.Load event listeners
+      // Get total calories
+      const totalCalories = ItemCtrl.getTotalCalories();
+
+      // Add total calories to UI
+      UICtrl.showTotalCalories(totalCalories);
+
+      // Load event listeners
       loadEventListeners();
     }
   }
   
 })(ItemCtrl, UICtrl);
 
-// 3.Initialize App
+// Initialize App
 AppCtrl.init();
