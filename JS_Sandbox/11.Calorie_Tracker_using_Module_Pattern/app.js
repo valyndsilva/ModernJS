@@ -216,9 +216,20 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
       // Add item event
       document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
 
+      // Disable submit on clicking Enter button
+    document.addEventListener('keypress', function(e){
+      if(e.keyCode === 13 || e.which === 13){
+        e.preventDefault();
+        return false;
+      }
+    });
+     
       // Edit icon click event
-    document.querySelector(UISelectors.itemList).addEventListener('click', itemUpdateSubmit);
-    }
+    document.querySelector(UISelectors.itemList).addEventListener('click', itemEditClick);
+    
+    // Update item event
+    document.querySelector(UISelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
+  }
   
     // Add item submit
     const itemAddSubmit = function(e){
@@ -251,8 +262,8 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
     }
 
       
-  // Update item submit
-  const itemUpdateSubmit = function(e){
+  // Click edit item
+  const itemEditClick = function(e){
     // console.log('test');
 
     // Target the edit icon
@@ -284,6 +295,26 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
     e.preventDefault();
   }
 
+  // Update item on submit
+  const itemUpdateSubmit = function(e){
+    // Get item input
+    const input = UICtrl.getItemInput();
+
+    // Update item
+    const updatedItem = ItemCtrl.updateItem(input.name, input.calories);
+
+    // Update UI
+    UICtrl.updateListItem(updatedItem);
+
+     // Get total calories
+     const totalCalories = ItemCtrl.getTotalCalories();
+     // Add total calories to UI
+     UICtrl.showTotalCalories(totalCalories);
+
+     UICtrl.clearEditState();
+
+    e.preventDefault();
+  }
 
 // Public methods
   return {
