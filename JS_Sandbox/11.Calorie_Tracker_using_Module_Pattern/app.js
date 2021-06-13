@@ -10,8 +10,35 @@
 // Step 10: Add and Get From Local Storage
 // Step 11: Delete and Clear From Local Storage
 // Extra Notes: we need Item, UI, App and Local Storage Controllers.
-// IV. Storage Controller (for local storage)
 
+// IV. Storage Controller (for local storage)
+const StorageCtrl = (function(){
+
+  //public methods
+  return{
+    storeItem:function(item){
+    let items = [];
+    
+    // localStorage only holds a string. To set a value you use JSON.stringify to convert the array of object to string.
+    // To get the value from LocalStorage you need to convert the string back into an object using JSON.Parse
+
+    //Check if any items in localStorage
+    if(localStorage.getItem('items')===null){
+        items =  [];
+        //Push new item
+        items.push(item);
+        // Set to localStorage
+        localStorage.setItem('items', JSON.stringify(items));
+      } else{
+        // Get the items 
+        items = JSON.parse(localStorage.getItem('items')); //convert string output to object using JSON.parse()
+
+        //Push new item
+        items.push(item);
+      }
+    }
+  }
+})
 
 
 // I.Item Controller (for local data) (using Module pattern) 
@@ -271,7 +298,7 @@ const UICtrl = (function(){ //IIFE function
 
 
 // III. App Controller (connect everything, event listeners, init function)
-const AppCtrl = (function(ItemCtrl, UICtrl){
+const AppCtrl = (function(ItemCtrl, StorageCtrl, UICtrl){
     // console.log(ItemCtrl.logData()); //outputs the data
 
     // Load event listeners
@@ -307,9 +334,6 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
       document.querySelector(UISelectors.clearBtn).addEventListener('click', clearAllItemsClick);
 
   }
-
-    
-  
     // Add item submit
     const itemAddSubmit = function(e){
 
@@ -322,8 +346,9 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
 
       //Check for name and calorie input
       if(input.name !== '' && input.calories !== ''){
-        // Add item
-        const newItem = ItemCtrl.addItem(input.name, input.calories);
+      
+      // Add item
+      const newItem = ItemCtrl.addItem(input.name, input.calories);
      
       // Add item to UI list
       UICtrl.addListItem(newItem);
@@ -333,6 +358,9 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
 
       // Add total calories to UI
       UICtrl.showTotalCalories(totalCalories);
+
+      //Store in loacal storage
+      StorageCtrl.storeItem(newItem);
 
       // Clear fields
       UICtrl.clearInput();
@@ -464,7 +492,7 @@ const clearAllItemsClick = function(){
     }
   }
   
-})(ItemCtrl, UICtrl);
+})(ItemCtrl, StorageCtrl, UICtrl);
 
 // Initialize App
 AppCtrl.init();
