@@ -91,7 +91,7 @@ const ItemCtrl = (function(){ //IIFE function
           //deleteItem function defined to be used later to delete item from data structure
           deleteItem: function(id){
             //Get ids
-            ids = data.items.map(function(item){
+            const ids = data.items.map(function(item){
               return item.id;
             });
             //Get index
@@ -206,6 +206,12 @@ const UICtrl = (function(){ //IIFE function
               </a>`;
             }
           });
+        },
+        //Create deleteItemList
+        deleteListItem: function(id){
+        const itemID = `#item-${id}`;
+        const item =document.querySelector(itemID);
+        item.remove();
         },
         // Create clearInput
         clearInput: function(){
@@ -378,6 +384,17 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
 
     //Delete item from data structure
     ItemCtrl.deleteItem(currentItem.id);
+    // Delete from UI
+    UICtrl.deleteListItem(currentItem.id);
+
+    // Get total calories
+    const totalCalories = ItemCtrl.getTotalCalories();
+
+    // Add total calories to UI
+    UICtrl.showTotalCalories(totalCalories);
+
+    UICtrl.clearEditState();
+
     e.preventDefault();
   }
 
