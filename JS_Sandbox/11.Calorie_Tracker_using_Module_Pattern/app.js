@@ -68,16 +68,16 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
 // Public methods
   return {
     init: function(){
-       // Fetch items from data structure
+       // 2.Fetch items from data structure
       const items = ItemCtrl.getItems();
       //   console.log(items);
 
-      // Populate list with items
+      // 3.Populate list with items
       UICtrl.populateItemList(items);
     }
   }
   
 })(ItemCtrl, UICtrl);
 
-// Initialize App
+// 1.Initialize App
 App.init();
