@@ -73,6 +73,21 @@ const ItemCtrl = (function(){ //IIFE function
             });
             return found;
           },
+          updateItem: function(name, calories){ //updates item in the data structure. Check ItemCtrl.logData() in console.
+            // Convert calories from string to number
+            calories = parseInt(calories);
+      
+            let found = null;
+      
+            data.items.forEach(function(item){
+              if(item.id === data.currentItem.id){
+                item.name = name;
+                item.calories = calories;
+                found = item;
+              }
+            });
+            return found;
+          },
           setCurrentItem: function(item){
             data.currentItem = item;
           },
@@ -105,6 +120,7 @@ const UICtrl = (function(){ //IIFE function
   // UISelectors
     const UISelectors = { // private 
         itemList: '#item-list', 
+        listItems: '#item-list li',
         // Add btn
         addBtn: '.add-btn',
        // Update btn
@@ -112,7 +128,7 @@ const UICtrl = (function(){ //IIFE function
        // Delete btn
         deleteBtn: '.delete-btn',
        // Back btn
-        deleteBtn: '.back-btn',
+        backBtn: '.back-btn',
         // inputs
         itemNameInput: '#item-name',
         itemCaloriesInput: '#item-calories',
@@ -161,6 +177,24 @@ const UICtrl = (function(){ //IIFE function
           </a>`;
           // Insert item into DOM
           document.querySelector(UISelectors.itemList).insertAdjacentElement('beforeend', li)
+        },
+         // Create updateListItem
+        updateListItem: function(item){
+          let listItems = document.querySelectorAll(UISelectors.listItems); // outputs a node list
+    
+          // Turn Node list into array
+          listItems = Array.from(listItems);
+    
+          listItems.forEach(function(listItem){
+            const itemID = listItem.getAttribute('id');
+    
+            if(itemID === `item-${item.id}`){
+              document.querySelector(`#${itemID}`).innerHTML = `<strong>${item.name}: </strong> <em>${item.calories} Calories</em>
+              <a href="#" class="secondary-content">
+                <i class="edit-item fas fa-pencil-alt"></i>
+              </a>`;
+            }
+          });
         },
         // Create clearInput
         clearInput: function(){
@@ -308,6 +342,7 @@ const AppCtrl = (function(ItemCtrl, UICtrl){
 
      // Get total calories
      const totalCalories = ItemCtrl.getTotalCalories();
+
      // Add total calories to UI
      UICtrl.showTotalCalories(totalCalories);
 
