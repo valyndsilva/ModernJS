@@ -1,9 +1,9 @@
-// Storage Controller (for local storage)
+// IV. Storage Controller (for local storage)
 
 
 
-// Item Controller (for local data) (using Module pattern) 
-const ItemCtrl = (function(){
+// I.Item Controller (for local data) (using Module pattern) 
+const ItemCtrl = (function(){ //IIFE function
   // 1.Item Constructor
   const Item = function(id, name, calories){
     this.id = id;
@@ -58,7 +58,7 @@ const ItemCtrl = (function(){
 })();
 
 
-// UI Controller (UI functioning (showing, hiding things etc))
+// II. UI Controller (UI functioning (showing, hiding things etc))
 const UICtrl = (function(){
   //7.UISelectors
     const UISelectors = { // private 
@@ -130,7 +130,7 @@ const UICtrl = (function(){
 })();
 
 
-// App Controller (connect everything, event listeners, init function)
+// III. App Controller (connect everything, event listeners, init function)
 const AppCtrl = (function(ItemCtrl, UICtrl){
     // console.log(ItemCtrl.logData()); //outputs the data
 
