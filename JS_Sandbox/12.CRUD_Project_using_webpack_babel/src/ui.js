@@ -85,23 +85,23 @@ class UI {
 
             // Create a cancel button
             const button = document.createElement('button');
-            button.className = 'post-cancel btn btn-light btn-block';
+            button.className = 'post-cancel btn btn-light btn-block mt-3';
             button.appendChild(document.createTextNode('Cancel Edit'));
 
             // Get parent
-            const cardForm = document.querySelector('card-form');
+            const cardForm = document.querySelector('.card-form');
             // Get element to insert before
-            const formEnd = document.querySelector('form-end');
+            const formEnd = document.querySelector('.form-end');
             // Insert cancel button
-            cardForm.insertBefore(button, fromEnd);
+            cardForm.insertBefore(button, formEnd);
         } else{
-             this.postSubmit.textContent = 'Post It';
+            this.postSubmit.textContent = 'Post It';
             this.postSubmit.className = 'post-submit btn btn-primary btn-block';
             // Remove cancel button if it is there
             if(document.querySelector('.post-cancel')){
                 document.querySelector('.post-cancel').remove();
             }
-            //Clear id from hideen field
+            //Clear ID from the hidden field
             this.clearIdInput();
             //Clear text fields
             this.clearFields();

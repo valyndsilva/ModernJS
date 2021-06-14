@@ -49,7 +49,7 @@ function submitPost(){
         })
         .catch(err => console.log(err))
     }
-
+}
 // Delete Post
 function deletePost(e){
     e.preventDefault();
@@ -74,19 +74,19 @@ function deletePost(e){
 function enableEdit(e){
 // console.log(e.target); // i tag
 
-if(e.target.parentElement.classList.contains('edit')){
-   const id = e.target.parentElement.dataset.id; //post id
-   const title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
-   const body = e.target.parentElement.previousElementSibling.textContent; 
-  
-  const data = {
-      id,
-      title,
-      body
-  }
-  //Fill form with current post
-  ui.fillForm(data);
-}
+    if(e.target.parentElement.classList.contains('edit')){
+    const id = e.target.parentElement.dataset.id; //post id
+    const title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
+    const body = e.target.parentElement.previousElementSibling.textContent; 
+    
+    const data = {
+        id,
+        title,
+        body
+    }
+    //Fill form with current post
+    ui.fillForm(data);
+    }
 
-e.preventDefault();
+    e.preventDefault();
 }
