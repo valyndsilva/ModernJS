@@ -26,26 +26,29 @@ function getPosts(){
     .then(data => ui.showPosts(data))
     .catch(err => console.log(err))
 }
-
+// Submit Post
 function submitPost(){
     const title = document.querySelector('#title').value;
     const body = document.querySelector('#body').value;
-    const data = {
-        // title: title,
-        // body : body
-        title, // ES2015 syntax if key and value is same 
-        body
+    if(title == '' || body === ''){
+        ui.showAlert('Please fill in all fields', 'alert alert-danger');
+    } else{
+            const data = {
+            // title: title,
+            // body : body
+            title, // ES2015 syntax if key and value is same 
+            body
+             }
+        
+        //Create post
+        http.post('http://localhost:3000/posts', data)
+        .then(data => {
+            ui.showAlert('Post added', 'alert alert-success');
+            ui.clearFields();
+            getPosts();
+        })
+        .catch(err => console.log(err))
     }
-
-    //Create post
-    http.post('http://localhost:3000/posts', data)
-    .then(data => {
-        ui.showAlert('Post added', 'alert alert-success');
-        ui.clearFields();
-        getPosts();
-    })
-    .catch(err => console.log(err))
-}
 
 // Delete Post
 function deletePost(e){
