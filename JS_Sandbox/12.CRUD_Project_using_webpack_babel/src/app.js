@@ -16,11 +16,15 @@ document.querySelector('.post-submit').addEventListener('click', submitPost);
 // Listen for delete
 document.querySelector('#posts').addEventListener('click', deletePost);
 
-// Listen for edit state: when you click edit it changes the state of the form adding the post you click into the form inputs, and change the button to cancel button.
+// Listen for edit state: 
+//when you click edit it changes the state of the form adding the post you click into the form inputs, and change the button to cancel button.
 //Using event delegation:
 document.querySelector('#posts').addEventListener('click',enableEdit);
 
+//Listen for cancel
+document.querySelector('.card-form').addEventListener('click', cancelEdit);
 
+//Get all posts
 function getPosts(){
     http.get('http://localhost:3000/posts') // since get is an async method it returns a promise.
     .then(data => ui.showPosts(data))
@@ -70,7 +74,6 @@ function deletePost(e){
 }
 
 // Enable Edit State
-
 function enableEdit(e){
 // console.log(e.target); // i tag
 
@@ -88,5 +91,13 @@ function enableEdit(e){
     ui.fillForm(data);
     }
 
+    e.preventDefault();
+}
+
+// Cancel Edit satete
+function cancelEdit(e){
+    if(e.target.classList.contains('post-cancel')){
+        ui.changeFormState('add');
+    }
     e.preventDefault();
 }
