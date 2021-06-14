@@ -16,3 +16,6 @@ export const person ={  // using 'export' lets the person be accessible through 
 export function sayHello(){
     return `Hello ${person.name}`;
 }
+
+const greeting = 'Hello World';
+export default greeting; // when you use default you don't need to use {} later to import it in somewhere else.
