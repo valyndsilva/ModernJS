@@ -16,6 +16,11 @@ document.querySelector('.post-submit').addEventListener('click', submitPost);
 // Listen for delete
 document.querySelector('#posts').addEventListener('click', deletePost);
 
+// Listen for edit state: when you click edit it changes the state of the form adding the post you click into the form inputs, and change the button to cancel button.
+//Using event delegation:
+document.querySelector('#posts').addEventListener('click',enableEdit);
+
+
 function getPosts(){
     http.get('http://localhost:3000/posts') // since get is an async method it returns a promise.
     .then(data => ui.showPosts(data))
@@ -49,7 +54,7 @@ function deletePost(e){
 
     // Use event propagation to target the correct post delete link since there are multiple posts
     if(e.target.parentElement.classList.contains('delete')){
-        const id = e.target.parentElement.dataset.id; // to get the id in the data-attribute from ui.js
+        const id = e.target.parentElement.dataset.id; // to get the id in the data-id attribute from ui.js
         if(confirm('Are you sure?')){
             http.delete(`http://localhost:3000/posts/${id}`)
             .then(data => {
@@ -59,4 +64,26 @@ function deletePost(e){
             .catch(err => console.log(err));
         }
     }
+}
+
+// Enable Edit State
+
+function enableEdit(e){
+// console.log(e.target); // i tag
+
+if(e.target.parentElement.classList.contains('edit')){
+   const id = e.target.parentElement.dataset.id; //post id
+   const title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
+   const body = e.target.parentElement.previousElementSibling.textContent; 
+  
+  const data = {
+      id,
+      title,
+      body
+  }
+  //Fill form with current post
+  ui.fillForm(data);
+}
+
+e.preventDefault();
 }
