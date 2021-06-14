@@ -20,7 +20,7 @@ class UI {
                     <i class="fas fa-pencil-alt"></i>
                     </a>
                      <a href="#" class="delete card-link" data-id="${post.id}">
-                    <i class="far fa-trash-alt"></i>
+                    <i class="fas fa-times"></i>
                     </a>
                 </div>
             </div>
