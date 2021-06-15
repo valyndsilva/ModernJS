@@ -25,5 +25,5 @@ Building projects with vanilla JavaScript. (No frameworks or libraries used)
 - WeatherJS App (Openweathermap API)
 - Profile Scroller (Iterators and Generators)
 - State Pattern Interface
-- Calorie Tracker (Module Pattern)
-- Microposts - Frontend CRUD app for REST API (using ES6 Modules, Webpack & Babel)
+- Calorie and Meal Tracker (Module Pattern)
+- Frontend CRUD Posts app for REST API (using ES6 Modules, Webpack & Babel)
