@@ -5,15 +5,16 @@ Multi-line
 comments 
 */
 
-// Log to console
+// console.log()
+console.log('Hi there!'); // Prints: Hi there!
 console.log('Hello there!'); // string
 console.log(123); // numbers
 console.log(true); // boolean
 
-// Value And Variables: Value is either Object Type or Primitive Type (Everything else)
+// Value And Variables: 
+// Value is either Object Type or Primitive Type (Everything else)
 const greeting = 'Hello';
 console.log(greeting); // variables
-
 console.log([1, 2, 3, 4]); // arrays
 console.log({ a: 1, b: 2 }); // object literals
 console.table({ a: 1, b: 2 }); // object in a table(index,value)
@@ -94,9 +95,9 @@ console.clear(); // clears the console
 // Primitive: String, Number, Boolean, Null, Undefined, Symbols (ES6) (Stored on the stack directly in the location the variable accesses)
 // Number: Floating point numbers (Used for decimals and integers)
 // Strings: Sequence of Characters. (Used for text)
-// Boolean: Logical type that can only be true or false. (Used for taking decisions)
+// Boolean: Logical primitive data type that can only be true or false. (Used for taking decisions)
 // Undefined: Value taken by a variable that is not defined / empty value.
-// Null: empty value
+// Null: Null is a primitive data type. It represents the intentional absence of value. In code, it is represented as null. Ex: let x = null;
 // Symbol (ES2015 / ES6): Value that is unique and cannot be changed.
 // BigInt (ES2020): Larger integers than Number type can hold.
 
@@ -134,10 +135,15 @@ console.log(typeof today);
 
 console.clear(); // clears the console
 
+// String .length:
+// The .length property of a string returns the number of characters that make up the string.
+let message = 'good nite';
+console.log(message.length); // Prints: 9
+console.log('howdy'.length); // Prints: 5
+
+
 // Type Conversion: Taking a variable and changing the variables data type.
-
 let val;
-
 val = 5; // Number
 console.log(val); // Output
 console.log(typeof val); // Output Type
@@ -232,6 +238,18 @@ console.log(typeof sum);
 
 console.clear(); // clears the console
 
+// Arithmetic Operators
+// Addition
+5 + 5
+// Subtraction
+10 - 5
+// Multiplication
+5 * 10
+// Division
+10 / 5
+// Modulo
+10 % 5
+
 // Assignment Operators
 let x = 10 + 5; // 15
 x += 10; // x = x + 10 = 25
@@ -243,12 +261,18 @@ console.log(x);
 
 // Comparison Operators (>, <, >=, <=)
 const now = 2021
-const ageVal = now-1991;
-const ageSel = now-1988;
-console.log(ageSel>ageVal); 
-console.log(ageSel>=18);
+const ageVal = now - 1991;
+const ageSel = now - 1988;
+console.log(ageSel > ageVal); 
+console.log(ageSel >= 18);
+const isFullAge = ageSel >= 18;
+console.log(now - 1991 < now - 1988);
 
-// Numbers and Math Object
+// Important Note: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+// Operators with higher precedence become the operands of operators with lower precedence.
+// multiplication has higher precedence than addition
+
+// Numbers and Math Object:
 const num1 = 100;
 const num2 = 50;
 let val3;
@@ -288,10 +312,16 @@ val3 = Math.min(8, 2, 10, -3);
 console.log(val3);
 val3 = Math.max(8, 2, 10, -3);
 console.log(val3);
+// The Math.random() function returns a floating-point, random number in the range from 0 (inclusive) up to but not including 1.
 val3 = Math.random(); // generates a random decimal number
 console.log(val3);
-val3 = Math.floor(Math.random() * 20 + 1); // to generate a random whole number we use the random() method. In this case the max number we want is 20 we multiply it by 20. And to run the number from 1-20 we add a + 1 to the number. Next we round it down to get the whole number instead of a decimal number.
+
+//The Math.floor() function returns the largest integer less than or equal to the given number.
+val3 = Math.floor(Math.random() * 20 + 1); 
 console.log(val3);
+// In this case the max number we want is 20 so we multiply it by 20. 
+// And to run the number from 1-20 we add a + 1 to the number. Next we round it down to get the whole number instead of a decimal number.
+
 
 console.clear(); // clears the console
 
