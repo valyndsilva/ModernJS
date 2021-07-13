@@ -11,8 +11,24 @@ console.log('Hello there!'); // string
 console.log(123); // numbers
 console.log(true); // boolean
 
+// String Interpolation:
+// String interpolation is the process of evaluating string literals containing one or more placeholders (expressions, variables, etc).
+// It can be performed using template literals: text ${expression} text.
+let age = 7;
+// String concatenation
+'Tommy is ' + age + ' years old.';
+// String interpolation
+`Tommy is ${age} years old.`;
+
 // Value And Variables: 
 // Value is either Object Type or Primitive Type (Everything else)
+// Variables are used whenever there’s a need to store a piece of data. A variable contains data that can be used in the program elsewhere. Using variables also ensures code re-usability since it can be used to replace the same value in multiple places.
+
+// To declare a variable in JavaScript, any of these three keywords can be used along with a variable name:
+// var is used in pre-ES6 versions of JavaScript.
+// let is the preferred way to declare a variable when it can be reassigned.
+// const is the preferred way to declare a variable with a constant value.
+
 const greeting = 'Hello';
 console.log(greeting); // variables
 console.log([1, 2, 3, 4]); // arrays
@@ -34,7 +50,9 @@ console.timeEnd('Hello');
 console.clear(); // clears the console
 
 // Variables - var, let and const(ES2015/ES6). In modern JS it's best to use let and const. var is rarely used.
-
+// Variables are used whenever there’s a need to store a piece of data. 
+// A variable contains data that can be used in the program elsewhere. 
+// Using variables also ensures code re-usability since it can be used to replace the same value in multiple places.
 const nameA = 'John Doe';
 console.log(nameA);
 nameA = 'Steve Smith'; // We can reassign variables with var and let.
@@ -261,7 +279,9 @@ console.log("A year has " + weeksInYear + " weeks and " + daysLeftOver + " days"
 // Assignment Operators
 let x = 10 + 5; // 15
 x += 10; // x = x + 10 = 25
+x -= 4; //x = x - 4 = 9
 x *= 4; //x = x * 4 = 100
+x /= 3; //x = x / 3 = 5
 x++; // x = x + 1
 x--;
 x--;
