@@ -10,6 +10,8 @@ console.log("Hello there!"); // string
 console.log(123); // numbers
 console.log(true); // boolean
 
+
+// Value And Variables: Value is either Object Type or Primitive Type (Everything else)
 var greeting = "Hello";
 console.log(greeting); // variables
 
@@ -83,12 +85,21 @@ console.log(numbers);
 
 // Important Note: By default we should use const, unless you need to change the value, initailize, use in an iterator or loop. Using const alerts the developer that the value cannot be re-assigned. 
 //It can only be mutated if it's an object or an array.
+//JS has dynamic typing so you don't need to manually define data types of the value stored in a variable. Instead, datatypes are determined automatically.
 
 console.clear(); // clears the console
 
 // Data Types: Primitive and Reference Data Types.
 
 //Primitive: String, Number, Boolean, Null, Undefined, Symbols (ES6) (Stored on the stack directly in the location the variable accesses)
+// Number: Floating point numbers (Used for decimals and integers)
+// Strings: Sequence of Characters. (Used for text)
+// Boolean: Logical type that can only be true or false. (Used for taking decisions)
+// Undefined: Value taken by a variable that is not defined / empty value.
+// Null: empty value
+// Symbol (ES2015 / ES6): Value that is unique and cannot be changed.
+// BigInt (ES2020): Larger integers than Number type can hold.
+
 
 //Reference Data Types: Arrays, Object literals, Functions, Dates, etc. (accessed by reference. Objects that are stored on the heap. Pointer to a location in memory. ).
 
