@@ -43,7 +43,8 @@ var greeting; // you can initialize var without a value & assign later.
 console.log(greeting);
 greeting = "Hello";
 console.log(greeting);
-// A var name can include letters, numbers, _, $ but cannot start with a number.
+// var and let can include letters, numbers, _, $ but cannot start with a number, reserved variable names 'function' and 'name'.
+// Constants are written in uppercase. Ex: let PI = 3.145;
 
 //Mutli-word var
 var firstName = "John"; //  Camel case (Recommended convention)
