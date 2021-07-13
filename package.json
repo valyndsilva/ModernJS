@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/valyndsilva/ModernJS/issues"
   },
-  "homepage": "https://github.com/valyndsilva/ModernJS#readme"
+  "homepage": "https://github.com/valyndsilva/ModernJS#readme",
+  "dependencies": {
+    "glob-parent": "^6.0.0"
+  }
 }
