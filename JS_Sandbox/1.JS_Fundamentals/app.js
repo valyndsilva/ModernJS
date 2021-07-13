@@ -238,7 +238,7 @@ console.log(typeof sum);
 
 console.clear(); // clears the console
 
-// Arithmetic Operators
+// Arithmetic Operators:
 // Addition
 5 + 5
 // Subtraction
@@ -249,6 +249,14 @@ console.clear(); // clears the console
 10 / 5
 // Modulo
 10 % 5
+
+// Remainder / Modulo Operator:
+// The remainder operator, sometimes called modulo, returns the number that remains after the right-hand number divides into the left-hand number as many times as it evenly can.
+// calculates # of weeks in a year, rounds down to nearest integer
+const weeksInYear = Math.floor(365/7);
+// calcuates the number of days left over after 365 is divded by 7
+const daysLeftOver = 365 % 7 ;
+console.log("A year has " + weeksInYear + " weeks and " + daysLeftOver + " days");
 
 // Assignment Operators
 let x = 10 + 5; // 15
