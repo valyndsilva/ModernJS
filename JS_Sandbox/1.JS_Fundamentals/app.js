@@ -5,20 +5,34 @@ Multi-line
 comments 
 */
 
-// console.log()
+// console.log():
 console.log('Hi there!'); // Prints: Hi there!
 console.log('Hello there!'); // string
 console.log(123); // numbers
 console.log(true); // boolean
 
-// String Interpolation:
-// String interpolation is the process of evaluating string literals containing one or more placeholders (expressions, variables, etc).
+// String Concatenation and String Interpolation:
+// String Concatenation: multiple strings can be concatenated together using the + operator. 
+let service = 'credit card';
+let month = 'May 30th'; 
+let displayText = 'Your ' + service  + ' bill is due on ' +  month + '.';
+console.log(displayText); // Prints: Your credit card bill is due on May 30th.
+
+// String interpolation: process of evaluating string literals containing one or more placeholders (expressions, variables, etc).
 // It can be performed using template literals: text ${expression} text.
 let age = 7;
 // String concatenation
 'Tommy is ' + age + ' years old.';
 // String interpolation
 `Tommy is ${age} years old.`;
+
+// Template Literals:
+// Template literals are strings that allow embedded expressions, ${expression}. While regular strings use single ' or double " quotes, template literals use backticks instead.
+let name1 = "Codecademy";
+console.log(`Hello, ${name1}`); 
+// Prints: Hello, Codecademy
+console.log(`Billy is ${6+8} years old.`); 
+// Prints: Billy is 14 years old.
 
 // Value And Variables: 
 // Value is either Object Type or Primitive Type (Everything else)
@@ -28,6 +42,19 @@ let age = 7;
 // var is used in pre-ES6 versions of JavaScript.
 // let is the preferred way to declare a variable when it can be reassigned.
 // const is the preferred way to declare a variable with a constant value.
+
+// let Keyword
+// let creates a local variable in JavaScript & can be re-assigned. Initialization during the declaration of a let variable is optional. A let variable will contain undefined if nothing is assigned to it.
+let count; 
+console.log(count); // Prints: undefined
+count = 10;
+console.log(count); // Prints: 10
+
+// const Keyword
+// A constant variable can be declared using the keyword const. It must have an assignment. Any attempt of re-assigning a const variable will result in JavaScript runtime error.
+const numberOfColumns = 4;
+numberOfColumns = 8;
+// TypeError: Assignment to constant variable.
 
 const greeting = 'Hello';
 console.log(greeting); // variables
@@ -287,7 +314,46 @@ x--;
 x--;
 console.log(x);
 
+// Logical Operator ||
+// The logical OR operator || checks two values and returns a boolean. If one or both values are truthy, it returns true. If both values are falsy, it returns false.
+true || false;        // true
+10 > 5 || 10 > 20;    // true
+false || false;       // false
+10 > 100 || 10 > 20;  // false
+
+// Logical Operator &&
+// The logical AND operator && checks two values and returns a boolean. If both values are truthy, then it returns true. If one, or both, of the values is falsy, then it returns false.
+true && true;      // true
+1 > 2 && 2 > 1;    // false
+true && false;     // false
+4 === 4 && 3 > 1;  // true
+
+// Logical Operator !
+// The logical NOT operator ! can be used to do one of the following:
+// Invert a Boolean value.
+// Invert the truthiness of non-Boolean values.
+let lateToWork = true;
+let oppositeValue = !lateToWork;
+console.log(oppositeValue); 
+// Prints: false
+
+// Ternary Operator ? :
+// It accepts a condition followed by a ? operator, and then two expressions separated by a :. If the condition evaluates to truthy, the first expression is executed, otherwise, the second expression is executed.
+let price = 10.5;
+let day = "Monday";
+day === "Monday" ? price -= 1.5 : price += 1.5;
+console.log(day);
+console.log(price);
+
 // Comparison Operators (>, <, >=, <=)
+// Comparison operators are used to comparing two values and return true or false depending on the validity of the comparison
+1 > 3       // false
+3 > 1       // true
+250 >= 250  // true
+1 === 1     // true
+1 === 2     // false
+1 === '1'   // false
+
 const now = 2021
 const ageVal = now - 1991;
 const ageSel = now - 1988;
@@ -299,6 +365,30 @@ console.log(now - 1991 < now - 1988);
 // Important Note: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 // Operators with higher precedence become the operands of operators with lower precedence.
 // multiplication has higher precedence than addition
+
+// if Statement:
+// An if statement accepts an expression with a set of parentheses:
+// If the expression evaluates to a truthy value, then the code within its code body executes.
+// If the expression evaluates to a falsy value, its code body will not execute.
+const isMailSent = true;
+if (isMailSent) {
+  console.log('Mail sent to recipient');
+}
+
+// else Statement
+// An else block can be added to an if block or series of if-else if blocks. The else block will be executed only if the if condition fails.
+const isTaskCompleted = false;
+if (isTaskCompleted) {
+  console.log('Task completed');
+} else {
+  console.log('Task incomplete');
+}
+
+// Truthy and Falsy
+// In JavaScript, values evaluate to true or false when evaluated as Booleans.
+// Values that evaluate to true are known as truthy
+// Values that evaluate to false are known as falsy
+// Falsy values include false, 0, empty strings, null undefined, and NaN. All other values are truthy.
 
 // Numbers and Math Object:
 const num1 = 100;
