@@ -1,9 +1,10 @@
-// alert("Hello World!");
-
+//INTRODUCTION:
+// Single line comment
 /* 
 Multi-line 
 comments 
 */
+// alert("Hello World!");
 
 // console.log():
 console.log('Hi there!'); // Prints: Hi there!
@@ -283,6 +284,8 @@ console.log(typeof sum);
 
 console.clear(); // clears the console
 
+// OPERATORS:
+
 // Arithmetic Operators:
 // Addition
 5 + 5
@@ -366,6 +369,8 @@ console.log(now - 1991 < now - 1988);
 // Operators with higher precedence become the operands of operators with lower precedence.
 // multiplication has higher precedence than addition
 
+// CONDITIONALS:
+
 // if Statement:
 // An if statement accepts an expression with a set of parentheses:
 // If the expression evaluates to a truthy value, then the code within its code body executes.
@@ -375,7 +380,7 @@ if (isMailSent) {
   console.log('Mail sent to recipient');
 }
 
-// else Statement
+// else Statement:
 // An else block can be added to an if block or series of if-else if blocks. The else block will be executed only if the if condition fails.
 const isTaskCompleted = false;
 if (isTaskCompleted) {
@@ -384,11 +389,66 @@ if (isTaskCompleted) {
   console.log('Task incomplete');
 }
 
-// Truthy and Falsy
+// else if Clause:
+// After an initial if block, else if blocks can each check an additional condition. 
+// An optional else block can be added after the else if block(s) to run by default if none of the conditionals evaluated to truthy.
+const size = 10;
+ 
+if (size > 100) {
+  console.log('Big');
+} else if (size > 20) {
+  console.log('Medium');
+} else if (size > 4) {
+  console.log('Small');
+} else {
+  console.log('Tiny');
+}
+// Print: Small
+
+// Truthy and Falsy:
 // In JavaScript, values evaluate to true or false when evaluated as Booleans.
 // Values that evaluate to true are known as truthy
 // Values that evaluate to false are known as falsy
 // Falsy values include false, 0, empty strings, null undefined, and NaN. All other values are truthy.
+
+// switch Statement
+// The switch statements provide a means of checking an expression against multiple case clauses. If a case matches, the code inside that clause is executed.
+// The case clause should finish with a break keyword. If no case matches but a default clause is included, the code inside default will be executed.
+// Note: If break is omitted from the block of a case, the switch statement will continue to check against case values until a break is encountered or the flow is broken.
+const food = 'salad';
+switch (food) {
+  case 'oyster':
+    console.log('The taste of the sea 🦪');
+    break;
+  case 'pizza':
+    console.log('A delicious pie 🍕');
+    break;
+  default:
+    console.log('Enjoy your meal');
+}
+// Prints: Enjoy your meal
+
+// FUNCTIONS:
+
+// A function is a reusable set of statements to perform a task or calculate a value. Functions can be passed one or more values and can return a value at the end of their execution. In order to use a function, you must define it somewhere in the scope where you wish to call it.
+
+// Defining the function:
+function sum(num1, num2) {
+  return num1 + num2;
+}
+
+// Calling functions:
+// Functions can be called, or executed, elsewhere in code using parentheses following the function name. When a function is called, the code inside its function body runs. Arguments are values passed into a function when it is called.
+
+// Calling the function:
+sum(3, 6); // 9
+
+// Function Parameters:
+// Inputs to functions are known as parameters when a function is declared or defined. Parameters are used as variables inside the function body. When the function is called, these parameters will have the value of whatever is passed in as arguments. It is possible to define a function without parameters.
+// The parameter is name
+function sayHello(name) {
+  return `Hello, ${name}!`;
+}
 
 // Numbers and Math Object:
 const num1 = 100;
