@@ -219,7 +219,7 @@ console.log(val); // Output
 console.log(typeof val); // Output Type
 console.log(val.toFixed(2));
 
-console.log(typeof null); // Returns a object which is a bug in JS but is not corrected due to legacy reasons. It should be of type null.
+console.log(typeof null); // Returns an object which is a bug in JS but is not corrected due to legacy reasons. It should be of type null.
 
 console.clear(); // clears the console
 
@@ -231,6 +231,22 @@ console.log(sum);
 console.log(typeof sum);
 
 console.clear(); // clears the console
+
+// Assignment Operators
+let x = 10 + 5; // 15
+x += 10; // x = x + 10 = 25
+x *= 4; //x = x * 4 = 100
+x++; // x = x + 1
+x--;
+x--;
+console.log(x);
+
+// Comparison Operators (>, <, >=, <=)
+const now = 2021
+const ageVal = now-1991;
+const ageSel = now-1988;
+console.log(ageSel>ageVal); 
+console.log(ageSel>=18);
 
 // Numbers and Math Object
 const num1 = 100;
